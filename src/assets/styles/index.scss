@@ -1,0 +1,99 @@
+@import "./main.scss";
+
+html {
+  font-size: 1px;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.flex {
+  display: flex;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.app-container {
+  text-align: center;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: 90px auto;
+}
+
+.login-container {
+  width: 100vw;
+  height: 100vh;
+}
+
+.Header {
+  position: fixed;
+  height: 90rem;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  z-index: 10;
+}
+
+.side-menu-overflow-item {
+  overflow: hidden;
+  transition:height 0.3s ease-out; 
+}
+
+.price-list-container {
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  color: black;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 50;
+  animation: 0.5s ease-in 0s 1 slideInFromLeft;
+  animation-direction: backwards;
+  // animation: 1s ease-out 0s 1 slideInFromLeft;
+}
+
+@keyframes slideInFromLeft {
+  0% {
+      transform: translateX(-100%) translateY(-100%);
+  }
+  100% {
+      transform: translateX(0) translateY(0);
+  }
+}
+
+//  handle retina displays
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+  html {
+    font-size: 1px;
+  }
+}
+
+// handle 4k retina displays
+@media (-webkit-min-device-pixel-ratio: 4), (min-resolution: 192dpi) { 
+  html {
+    font-size: 1px;
+  }
+}
+
+@media (max-width: 800px) {
+  .App-main {
+    grid-template-columns: none;
+    grid-template-rows: auto auto;
+  }
+}
+
+@media (max-width: 1300px) {
+  html {
+    font-size: 1px;
+  }
+}
