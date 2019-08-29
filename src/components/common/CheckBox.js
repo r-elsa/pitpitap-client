@@ -27,9 +27,12 @@ const StyledSpan = styled.span`
 export default props => {
 
     return (
-        props.checked ? <StyledBox backgroundColor='lightGreen' {...props}>
-            <StyledSpan color={props.color} fontSize={props.fontSize}>&#10003;</StyledSpan>
-        </StyledBox> : <StyledBox {...props}/>
+        props.checked ?
+            <StyledBox backgroundColor='lightGreen' {...props}>
+                <StyledSpan color={props.color} fontSize={props.fontSize}>&#10003;</StyledSpan>
+            </StyledBox>
+            :
+            <StyledBox {...props} />
     )
 }
 

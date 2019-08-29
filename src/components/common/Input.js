@@ -4,13 +4,15 @@ import styled from 'styled-components';
 
 const StyledInput = styled.input`
 font-size: 18rem;
-margin-top: 10rem;
 font-weight: 300;
-color: grey;
+background-color: #fafafa;
+color: #058bff;
 border: none;
-padding: 2rem;
+padding: 0;
+text-indent: 5rem;
 outline: none;
-border-bottom: solid 1rem grey;
+border-radius: 5px;
+border: solid 2px transparent;
 ${color}
 ${space}
 ${fontSize}
@@ -18,27 +20,27 @@ ${width}
 ${colorStyle}
 `;
 
-export default props => {
+export default React.forwardRef((props, ref) => {
     const [active, setActive] = useState(false);
 
     // add active on focus
     const handleChange = e => {
         const { value } = e.target;
-        if (value === '') {
-            setActive(false);
-        } else {
-            setActive(true);
-        }
+        // if (value === '') {
+        //     setActive(false);
+        // } else {
+        //     setActive(true);
+        // }
         if (props.onChange) {
             props.onChange(value)
         }
     }
     
-    const colorStyle = props.removeActive ? props.colors : active ? 'activeInput' : 'emptyInput';
+    // const colorStyle = props.removeActive ? props.colors : active ? 'activeInput' : 'emptyInput';
     
     return (
-        <StyledInput {...props} onChange={handleChange} colors={colorStyle}/>
+        <StyledInput {...props} onChange={handleChange} ref={ref}/>
     )
-}
+})
 
 

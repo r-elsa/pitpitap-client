@@ -1,37 +1,84 @@
 import { userConstants as uc } from './constants';
 
-const logIn = (user) => ({
-	type: uc.LOGIN,
+const logIn = (token) => ({
+	type: 'API',
 	payload: {
-		...user,
-		onSuccess: setUser
+		url: '/users/me',
+		method: 'GET',
+		token,
+		onSuccessActions: [(data) => setUser({ ...data, ...data.data })],
 	}
 });
 
 const logOut = () => ({
 	type: uc.LOGOUT,
+	saveToLocal: true,
 	payload: {
-		user: null
+		itemName: 'localUser',
+		data: {}
 	}
 });
 
-const signUp = (user) => ({
-	type: uc.SIGNUP,
+const sendCodeToUser = (phone) => ({
+	type: 'API',
 	payload: {
-		...user,
-		onSuccess: setUser
+		url: '/auth/login',
+		method: 'POST',
+		data: {
+			phone
+		}
 	}
-});
+})
 
-const setUser = ({ user, token }) => ({
+const validateCode = (phone, code, onError) => ({
+	type: 'API',
+	payload: {
+		url: '/auth/validate_code',
+		method: 'POST',
+		onSuccessActions: [(data) => setUser({ ...data, ...data.data })],
+		onError,
+		data: { phone, code }
+	}
+})
+
+const registerUser = (code, onError) => ({
+	type: 'API',
+	payload: {
+		url: '/auth/register',
+		method: 'POST',
+		onSuccessActions: [setClient],
+		onError,
+		data: {
+			client_code: code
+		}
+	}
+})
+
+const setClient = (data) => ({
 	type: uc.SET_USER,
-	data: { user, token }
-});
+	payload: {
+		client: data.data.client,
+		id: data.data.id
+	}
+})
 
+
+const setUser = (data) => ({
+	type: uc.SET_USER,
+	saveToLocal: true,
+	payload: {
+		itemName: 'localUser',
+		id: data.id,
+		token: data.token || data['x-auth-token'],
+		client: data.client
+	}
+});
 
 
 export const userActions = {
 	logIn,
-	signUp,
 	logOut,
+	sendCodeToUser,
+	validateCode,
+	registerUser,
 };

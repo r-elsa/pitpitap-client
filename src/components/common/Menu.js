@@ -3,15 +3,18 @@ import styled from 'styled-components';
 
 export default styled.div`
     display: block;
-    position: fixed;
+    position: absolute;
     z-index: 30;
     top: ${props => props.top};
     right: ${props => props.right};
+    left: ${props => props.left};
+    background-image: url(${props => props.backgroundImage});
     border-radius: 4rem;
-    box-shadow: 0 2rem 10rem 0 rgba(0, 0, 0, 0.33);
-    background-color: #ffffff;
+    background-size: contain;
+    background-repeat: no-repeat;
     overflow: hidden;
-    transition:height 0.3s ease-out; 
+    transition:opacity 0.4s ease-in-out; 
+    opacity: ${props => props.opacity}
     ${space}
     ${width}
     ${height}

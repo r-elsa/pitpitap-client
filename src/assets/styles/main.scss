@@ -1,23 +1,24 @@
 // main styles for the app
 // use @import "./assets/styles/example.scss";
 
-
 .main-container {
-    text-align: center;
-    min-height: 100vh;
-    display: grid;
+  text-align: center;
+  min-height: 100vh;
+  display: grid;
+  // define your header body and footer height
+  grid-template-rows: 85rem auto 110rem;
 
-    // define your header body and footer height
-    grid-template-rows: 90rem auto 70rem;
-    &-header {
-        background-color: aquamarine;
-    }
-    &-body {
-        display: grid;
-        grid-template-columns: 350rem auto;
-        background-color: rgba(247,146,28, 0.3);
-    }
-    &-footer {
-        background-color: burlywood;
-    }
+  &-body {
+    display: grid;
+    grid-template-columns: 350rem auto;
   }
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}

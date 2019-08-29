@@ -4,13 +4,14 @@ import styled from 'styled-components';
 
 const StyledTextArea = styled.textarea`
 font-size: 18rem;
-margin-top: 10rem;
 font-weight: 300;
 outline: none;
 width: 885rem;
 height: 112rem;
+padding: 0;
+text-indent: 5rem;
 border-radius: 3rem;
-border: solid 2rem #cbcbcb;
+border: solid 1px #0255a4;
 background-color: #ffffff;
 ${color}
 ${space}
@@ -36,10 +37,8 @@ export default props => {
     }
 
 
-    const colorStyle = props.removeActive ? props.colors : active ? 'activeInput' : 'emptyInput';
-
     return (
-        <StyledTextArea {...props} onChange={handleChange} colors={colorStyle} value={props.value} />
+        <StyledTextArea {...props} onChange={handleChange} value={props.value} />
     )
 }
 

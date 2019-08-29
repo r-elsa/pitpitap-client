@@ -1,13 +1,13 @@
-import { width, space, textStyle, colorStyle, color, fontFamily, letterSpacing } from 'styled-system';
+import { width, space, textStyle, colorStyle, color, typography } from 'styled-system';
 import styled from 'styled-components';
 
-// This is the example of c styled component
 export default styled.p`
     align-items: center;
+    margin: 0;
+    font-size: 10rem;
     ${width}
     ${space}
-    ${fontFamily}
-    ${letterSpacing}   
+    ${typography}   
     ${color}
     ${colorStyle}
     ${textStyle}

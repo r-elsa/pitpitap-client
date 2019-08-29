@@ -1,33 +1,45 @@
-import React from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Route, Redirect, Switch, BrowserRouter } from "react-router-dom";
+import { Route, Switch, withRouter } from "react-router-dom";
+import { userActions } from '../store/user/actions';
 
-import AppHeader from './../components/AppHeader';
-import AppFooter from './../components/AppFooter';
-import SideMenu from './../components/SideMenu';
-import ContainerOne from './bodyContainers/ContainerOne';
-import ContainerTwo from './bodyContainers/ContainerTwo';
-import ContainerThree from './bodyContainers/ContainerThree';
+import AboutPage from './pages/AboutPage';
+import ServicePage from './pages/ServicePage';
 
-const Main = () => {
+const Main = (props) => {
+
+    // getting all user data. call all the
+    useEffect(() => {
+
+    }, []);
+
+
+    // setting the active route. the route is coming from the store
+    useEffect(() => {
+        props.history.push(props.activeRoute)
+    }, [props.activeRoute]);
+
     return (
-        <div className="main-container" >
-            <div className='main-container-header'><AppHeader /></div>
-            <div className="main-container-body">
-                <BrowserRouter>
-                    <SideMenu />
-                    <Switch>
-                        <Redirect exact from="/" to="/one" />
-                        <Route path='/one' component={ContainerOne} />
-                        <Route path='/two' component={ContainerTwo} />
-                        <Route path='/three' component={ContainerThree} />
-                    </Switch>
-                </BrowserRouter>
+        <Fragment>
+            <div className="app-body">
+                <Switch>
+                    <Route path='/service' component={ServicePage} />
+                    <Route path='/about' component={AboutPage} />
+                </Switch>
             </div>
-            <div className='main-container-footer'><AppFooter /></div>
-        </div>
+        </Fragment>
     );
 }
 
+const mapStateToProps = (state) => {
+    return {
+        activeRoute: state.ui.activeRoute,
+    }
+};
 
-export default connect()(Main);
+const mapDispatchToProps = dispatch => ({
+    example: () => dispatch(() => {/* here you call the action you want */ })
+})
+
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));

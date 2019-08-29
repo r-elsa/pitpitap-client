@@ -1,4 +1,3 @@
-import React from 'react';
 import { space, width, height, color, flexbox } from 'styled-system';
 import styled from 'styled-components';
 

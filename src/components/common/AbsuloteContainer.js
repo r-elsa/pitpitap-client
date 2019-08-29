@@ -6,6 +6,8 @@ export default styled.div`
     position: absolute;
     top: ${props => props.top};
     right: ${props => props.right};
+    left: ${props => props.left};
+    bottom: ${props => props.bottom};
     ${space}
     ${width}
     ${height}

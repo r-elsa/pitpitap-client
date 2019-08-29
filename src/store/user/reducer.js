@@ -1,24 +1,20 @@
 import { userConstants as uc } from './constants';
 
 const initialState = {
-	loggedIn: false,
-	localSettings: {},
-	token: null,
-	user: null
+	id: null,
+	token: '',
+	client: {}
 }
 
 export const user = (state = initialState, action) => {
 	switch (action.type) {
 		case uc.SET_USER:
 			return {
-				loggedIn: true,
-				...action.payload
+				...action.payload,
+				client: action.payload.client || {},
 			};
 		case uc.LOGOUT:
-			return {
-				loggedIn: false,
-				user: null,
-			};
+			return initialState;
 		default:
 			return state;
 	}

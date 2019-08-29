@@ -1,7 +1,8 @@
 import { uiConstants as uc } from './constants';
 
 const initialState = {
-	pendingRequests: 0
+	pendingRequests: 0,
+	activeRoute: 'about',
 }
 
 export const ui = (state = initialState, action) => {
@@ -13,6 +14,10 @@ export const ui = (state = initialState, action) => {
 		case uc.API_FINISH:
 			return Object.assign({}, state, {
 				pendingRequests: state.pendingRequests - 1
+			});
+		case uc.SET_ACTIVE_ROUTE:
+			return Object.assign({}, state, {
+				activeRoute: action.payload.route
 			});
 		default:
 			return state;

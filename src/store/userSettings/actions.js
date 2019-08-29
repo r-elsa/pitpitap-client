@@ -1,24 +1,23 @@
 import { userSettingsConstants as sc } from './constants';
 
 // example page for gettign data from api
-
-const getUserSettings = () => ({
+const getUserMeta = () => ({
     type: 'API',
     payload: {
-        url: `set here the url for api call`,
-        onSuccess: (data) => setUserSettings(data)
+        url: `/utils/meta`,
+        onSuccessActions: [setUserMeta]
     }
 })
 
-const setUserSettings = (data) => ({
-    type: sc.SET_USER_SETTINGS,
+const setUserMeta = (data) => ({
+    type: sc.SET_USER_META,
     payload: {
-        data
+        data: data.data
     }
 })
 
 
 export const userSettingsActions = {
-    getUserSettings
+    getUserMeta
 };
 

@@ -1,7 +1,13 @@
 @import "./main.scss";
+@import "./loader.scss";
 
 html {
+  // control for all the font size in the app - if you set to 0.5 all the fonts will divided by half
   font-size: 1px;
+  // control the direction for the hole app - change to ltr for english applications
+  direction: rtl;
+  // set to scroll for the app will not move right and left in pages that have or haven't a scroll
+  overflow-y: scroll;
 }
 
 body {
@@ -13,12 +19,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.flex {
-  display: flex;
-}
-
 .pointer {
   cursor: pointer;
+}
+
+.relative {
+  position: relative;
 }
 
 .app-container {
@@ -28,9 +34,27 @@ body {
   grid-template-rows: 90px auto;
 }
 
+.app-header {
+  background-color: #fff;
+  padding: 0 300rem;
+}
+
+.app-body {
+  padding: 0 300rem;
+  border-top: solid 2px #0255a4;
+  border-bottom: solid 1px #0255a4;
+}
+
+.app-footer {
+  box-shadow: 4px 5px 13px 0 rgba(0, 0, 0, 0.25);
+  padding: 0 300rem;
+  background-color: #ffffff;
+}
+
 .login-container {
-  width: 100vw;
-  height: 100vh;
+  padding: 0 200rem;
+  border-radius: 2px;
+  background-image: linear-gradient(251deg, #1581eb, #044e98);
 }
 
 .Header {
@@ -45,7 +69,7 @@ body {
 
 .side-menu-overflow-item {
   overflow: hidden;
-  transition:height 0.3s ease-out; 
+  transition: height 0.3s ease-out;
 }
 
 .price-list-container {
@@ -62,26 +86,70 @@ body {
   // animation: 1s ease-out 0s 1 slideInFromLeft;
 }
 
+.mobile-show {
+  display: none !important;
+}
+
 @keyframes slideInFromLeft {
   0% {
-      transform: translateX(-100%) translateY(-100%);
+    transform: translateX(-100%) translateY(-100%);
   }
   100% {
-      transform: translateX(0) translateY(0);
+    transform: translateX(0) translateY(0);
   }
 }
 
 //  handle retina displays
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   html {
     font-size: 1px;
   }
 }
 
 // handle 4k retina displays
-@media (-webkit-min-device-pixel-ratio: 4), (min-resolution: 192dpi) { 
+@media (-webkit-min-device-pixel-ratio: 4), (min-resolution: 192dpi) {
   html {
     font-size: 1px;
+  }
+}
+
+@media (max-width: 1600px) {
+  html {
+    font-size: 0.9px;
+  }
+  .app-header {
+    padding: 0 100rem;
+  }
+  .app-body {
+    padding: 0 100rem;
+  }
+  .app-footer {
+    padding: 0 100rem;
+  }
+}
+
+@media (max-width: 1300px) {
+  html {
+    font-size: 0.8px;
+  }
+  .app-header {
+    padding: 0 50rem;
+  }
+  .app-body {
+    padding: 0 50rem;
+  }
+  .app-footer {
+    padding: 0 50rem;
+  }
+
+  .login-container {
+    padding: 0 100rem;
+  }
+}
+
+@media (max-width: 1100px) {
+  html {
+    font-size: 0.7px;
   }
 }
 
@@ -90,10 +158,22 @@ body {
     grid-template-columns: none;
     grid-template-rows: auto auto;
   }
-}
-
-@media (max-width: 1300px) {
-  html {
-    font-size: 1px;
+  .app-header {
+    padding: 0;
+  }
+  .app-body {
+    padding: 0 50rem;
+  }
+  .app-footer {
+    padding: 0 50rem;
+  }
+  .mobile-show {
+    display: initial !important;
+  }
+  .mobilesa-hide {
+    display: none !important;
+  }
+  .tires-select {
+    margin-top: 20rem;
   }
 }

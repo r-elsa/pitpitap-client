@@ -1,5 +1,5 @@
 import React from 'react';
-import { space, flexbox, width, colorStyle, color, border, shadow } from 'styled-system';
+import { space, layout, flexbox, colorStyle, color, border, shadow } from 'styled-system';
 import styled from 'styled-components';
 
 export default styled.div`
@@ -12,5 +12,5 @@ ${border}
 ${color}
 ${colorStyle}
 ${flexbox}
-${width}
+${layout}
 `;

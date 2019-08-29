@@ -1,8 +1,11 @@
-const appHeaderColor = '#39b449';
-const appBodyColor = 'rgba(247,146,28, 0.3)';
-const appFooterColor = '#d91b5b';
-const appBlueColor = '#2a3890';
+// This file is the configurtion for all the styled system libarary
+// For more information about the structure of this file go to https://styled-system.com/
+
+const appBluesColors = ['#1581eb', '#044e98', '#0255a4', '#02386e', '#67b3ff'];
+const appYelowColors = ['#ffdf1b', '#ffd700', '#ffc900'];
+const appWhiteColors = ['#ffffff', '#ffffff'];
 const appGreyColor = '#979797';
+const appRedColor = '#ff3838';
 const appBlackColor = '#000000';
 
 const breakpoints = ['40em', '52em', '64em', '80em']
@@ -43,13 +46,12 @@ export const theme = {
   heights: [16, 32, 64, 128, 256],
   maxWidths: [16, 32, 64, 128, 256, 512, 768, 1024, 1536],
   colors: {
-    header: appHeaderColor,
-    main: appBodyColor,
-    footer: appFooterColor,
-    blue: appBlueColor,
     grey: appGreyColor,
     black: appBlackColor,
-    whites: ['rgba(255,255,255,.7)', 'rgba(255,255,255,.4)','rgba(255,255,255,.125)'],
+    blue: appBluesColors,
+    yellow: appYelowColors,
+    red: appRedColor,
+    whites: appWhiteColors,
   },
   textStyles: {
     clickable: {
@@ -64,6 +66,16 @@ export const theme = {
     emptyInput: {
       color: appGreyColor,
       borderColor: appGreyColor
+    },
+    errorInput: {
+      color: appRedColor,
+      borderColor: appRedColor
+    },
+    formBlueInput: {
+      color: appBluesColors[2],
+      backgroundColor: 'white',
+      border: 'solid 1px',
+      borderColor: appBluesColors[2]
     },
     activeInput: {
       color: '#4a90e2',
@@ -83,13 +95,13 @@ export const theme = {
     },
     blueContainer: {
       color: 'white',
-      backgroundColor: appBlueColor
+      backgroundColor: appBluesColors[0]
     },
   },
   buttons: {
     login: {
       color: 'white',
-      backgroundColor: appBlueColor,
+      backgroundColor: appBluesColors[0],
       fontFamily: 'Raleway',
       fontSize: '20rem',
       width: '273rem',

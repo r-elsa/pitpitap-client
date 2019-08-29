@@ -5,15 +5,11 @@ export const LocalstorageMiddleware = ({ dispatch }) => next => action => {
     return;
   }
 
-  const { itemName, data } = action.payload;
+  const { itemName } = action.payload;
 
-  let localSettings = JSON.parse(localStorage.getItem(itemName)) || {};
-
+  // let localSettings = JSON.parse(localStorage.getItem(itemName)) || {};
+  
   localStorage.setItem(itemName, JSON.stringify({
-      ...localSettings,
-      ...data
+      ...action.payload
   }))
-
-  next(action);
-
 };

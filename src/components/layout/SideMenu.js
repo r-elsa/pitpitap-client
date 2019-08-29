@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { withRouter } from 'react-router-dom';
-import { Text, FlexContainer } from './../components/common';
+import { Text, FlexContainer } from '../common';
 import SideMenuItem from './SideMenuItem';
 
 const Separator = styled.div`border-bottom: solid 1px rgba(151, 151, 151, 0.5); width: 350rem;`;
