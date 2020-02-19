@@ -1,0 +1,63 @@
+// main styles for the app
+// use @import "./assets/styles/example.scss";
+
+.main-container {
+  background-image: url(../images/bkg.png);
+  text-align: center;
+  min-height: 100vh;
+  display: grid;
+  // define your header body and footer height
+  grid-template-rows: 85rem auto 20rem;
+
+  &-body {
+    display: grid;
+    grid-template-columns: 350rem auto;
+  }
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.side-menu {
+
+  @media(max-width: 1000px) {
+    
+    width: 227px;
+    height: 100%;
+    background: #54637a;
+    transition: all 0.3s linear; 
+    transform-origin: 1px;
+    top:0;
+    right:0;
+    position:fixed;
+    color:white;
+    z-index:1000;
+ 
+
+    
+  &.open {
+    display:block;
+    
+  }
+  &.closed {
+    display:none;
+  
+
+  }
+
+  }
+}
+
+
+ 
+
+ 
+
+  
+  
