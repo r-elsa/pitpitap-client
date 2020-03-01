@@ -1,6 +1,11 @@
 // main styles for the app
 // use @import "./assets/styles/example.scss";
 
+
+@import "~slick-carousel/slick/slick.css"; 
+@import "~slick-carousel/slick/slick-theme.css";
+
+
 .main-container {
 
   text-align: center;

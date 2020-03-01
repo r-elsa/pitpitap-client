@@ -6,7 +6,7 @@ import group_four from '../../assets/images/group-4.png';
 import group_six from '../../assets/images/group-6.png';
 import bigpitpitap from  '../../assets/images/pitpitap.png';
 import fill_one from  '../../assets/images/fill-1.svg';
-import Slider from '../../components/TheGamePage/Slider'
+import SimpleSlider from '../../components/TheGamePage/Slider'
 import defaultSlides from '../../components/TheGamePage/defaultSlides';
 import Download from '../../components/Download'
 
@@ -56,8 +56,11 @@ const TheGamePage = ({breakpoint, renderMobile, renderDesktop}) => {
         <Text fontSize='35rem' fontFamily='Rounded1c_Bold' padding='20rem 0 10rem 0'>הורידו עכשיו</Text>
 
         <Download/>
-        <Slider slides = {defaultSlides} margin='auto'/>
-        </div>
+        
+              <SimpleSlider slides={defaultSlides}/></div>
+
+      {/*   <Slider slides = {defaultSlides} margin='auto'/> */}
+      
         <Image src={group_four} height='70vh' m='15rem auto' />
           
         </GridContainer>
@@ -88,7 +91,9 @@ const TheGamePage = ({breakpoint, renderMobile, renderDesktop}) => {
 
         <Image src={group_four} height='65vh' m='auto'  padding = '40rem 10rem 10rem 10rem' />
 
-        <Slider slides = {defaultSlides} margin='auto'/>
+        <SimpleSlider slides ={defaultSlides}/>
+
+      {/*   <Slider slides = {defaultSlides} margin='auto'/> */}
 
          </FlexContainer>
 

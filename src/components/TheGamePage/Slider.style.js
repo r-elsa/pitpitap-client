@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import css from'styled-components'
 
-export const Navigation = styled.ul`
+/* export const Navigation = styled.ul`
   margin: 0;
   padding: 0;
   display: inline-block;
@@ -30,7 +30,7 @@ export const BoxContainer = styled.div`
     grid-template-rows: 1fr 2fr 1fr;
     grid-gap: 0%;
     height:25vh;
- /*    direction: ltr; */
+
     margin-top:30rem;
   
   @media (max-width:800px){
@@ -40,35 +40,52 @@ export const BoxContainer = styled.div`
 
   }
 
-`;
+`; */
 
 export const SlideContainer = styled.div`
-    position:relative;
+  margin:auto;
+  padding :30rem 10rem 10rem 10rem;
+/*    background:red; */
+    width:35vw;
+     height:15vh;
+     direction:rtl;
+      margin-top:30rem;
+
+@media (max-width:800px){
+  width:90vw;
+  height:5vh;
+
+}
+
+   /*  position:relative;
     display:flex;
     justify-content:center;
-    vertical-align:center;
+    vertical-align:center; */
     
    
 
 `;
 
-export const Slide = styled.div`
-    position:absolute;
-    top:0;
-    opacity:0;
-    transition: .3s ease;
-    margin:auto ;
-    padding:0rem 30rem 0rem 30rem;
 
-    &.active {
-        position:absolute;
-        top:0;
-        opacity:1;
-        transition: .5s ease;
-  }
-`;
+export const Style = styled.div`
+ width:35vw;
+ height:10vh;
+ `
 
-export const Button = styled.button`
+/* 
+ export const Slide = styled.div`
+    width:40vw;
+  
+  
+
+    @media (max-width:800px){
+    width:80vw;
+ 
+
+}
+`;   */
+ 
+/* export const Button = styled.button`
     border:none;
     background:transparent;
     cursor: pointer;
@@ -89,12 +106,12 @@ export const Button = styled.button`
     }
 
 `;
+ */
 
-
-export const Reversediv = styled.div`
+/* export const Reversediv = styled.div`
     direction: ltr;
 
-`;
+`; */
 
 
 

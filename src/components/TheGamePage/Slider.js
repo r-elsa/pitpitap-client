@@ -1,4 +1,85 @@
-import React, {useState} from 'react'
+
+import React, { useState } from 'react';
+import Slider from "react-slick";
+import { connect } from 'react-redux';
+import { FlexContainer, Text, GridContainer, Image, SvgContainer} from '../../components/common'; 
+import { Navigation, NavigationItem, BoxContainer, SlideContainer, Slide, Button } from './Slider.style'
+
+const SimpleSlider = ({slides}) => {
+
+/*     const [slide, setSlide] = useState(slides); */
+
+
+    const settings = {
+     
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        variableWidth: true,
+        
+      };
+
+    return (
+         <SlideContainer>
+             <Text fontSize='20rem' fontFamily='Rounded1c_Medium' margin='auto' marginBottom='0' >אז איך משחקים?  </Text>
+        <Slider {...settings}>
+         
+
+        {slides.map((slide,index) => (
+               <div style={{width:'35vw' /* 90vw */, height:'10vh'}} key = {slide.id}>
+                   <Text style={{fontSize:'18rem', fontFamily :'Rounded1c_Regular'}}>{slide.title}</Text>
+                   
+               
+                   </div>
+           ))}
+
+        </Slider>
+        </SlideContainer>
+
+    );
+}
+
+const mapStateToProps = (state) => {
+    return {
+        
+    }
+};
+
+const mapDispatchToProps = dispatch => ({
+ /*    exampleFunctionToDispatch: data => dispatch(()=>(data)), */
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(SimpleSlider);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* import React, {useState} from 'react'
 import { Navigation, NavigationItem, BoxContainer, SlideContainer, Slide, Button } from './Slider.style'
 import { FlexContainer, Text, GridContainer, Image, SvgContainer} from '../../components/common'; 
 
@@ -62,7 +143,7 @@ const Slider = ({slides}) => {
 }
   
 
-export default Slider
+export default Slider */
 
 
 

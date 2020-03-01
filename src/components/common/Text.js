@@ -4,6 +4,7 @@ import styled from 'styled-components';
 export default styled.p`
     align-items: center;
     margin: 0;
+    direction:rtl
     ${padding};
     ${fontFamily}
     color: #54637a;
