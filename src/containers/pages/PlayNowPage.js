@@ -94,7 +94,8 @@ const PlayNowPage = props => {
           
         }
 
-
+const isMobile = width < 800
+        
     return (
         <FlexContainer flexDirection='column' alignItems='center'>
          
@@ -109,17 +110,12 @@ const PlayNowPage = props => {
 
           
 
-
-
-
-
-
-         <GridContainer gridTemplateColumns= 'repeat(7, 1fr)' gridTemplateRows= '1fr' gridGap= '0' marginTop={['20rem','15rem']} width={['95vw', '50vw']} height = {['15vh', '16vh']}>
-
+         <GridContainer className = {isMobile ? 'scrollbar' : ''} gridTemplateColumns= 'repeat(7, 1fr)' gridTemplateRows= '1fr' gridGap= {['50rem', '0']} marginTop={['20rem','15rem']} width={['95vw', '50vw']} height = {['15vh', '16vh']}>
+             
                 {
                    items.map((item, index) => (
                     <span key={index} onClick ={() =>  handleClick(index)}>
-                        <Image src={item.imgsrc} background={active == index ? 'white': 'transparent'} height= {['45rem', '7vh']} borderRadius='40rem' margin='auto'  style = {{cursor:'pointer'}} />    
+                        <Image src={item.imgsrc} background={active == index ? 'white': 'transparent'} height= {['67rem', '7vh']} borderRadius='40rem' margin='auto' style = {{cursor:'pointer'}} />    
                        
                           }
                             <Text fontSize= {['15rem','20rem']} fontFamily ={active == index ? 'Rounded1c_Black': 'Rounded1c_Regular'} margin='auto'>{item.name}</Text>
@@ -128,6 +124,8 @@ const PlayNowPage = props => {
 
                    ))
                }
+
+           
                                  
                   </GridContainer>  }
                

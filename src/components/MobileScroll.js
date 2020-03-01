@@ -16,15 +16,12 @@ import React, { Component } from "react";
  
  ];
   
-/*  const MenuItem = ({ text, selected }) => {
-   return <div className={`menu-item ${selected ? "active" : ""}`}>{text}</div>;
- };
- */
+
  
  export const Menu = list =>
    list.map(el => {
      
- /* className = {`menu-item ${selected ? "active" : ""}`} */ 
+
      return <div style={{margin:'20px', fontSize:'20px'}} text={el.name} key={el.name}>{el.name}</div>;
    });
  
@@ -43,9 +40,9 @@ import React, { Component } from "react";
  
 
    onSelect = key => {
-     console.log(`onSelect: ${key}`);
+    
      this.setState({ selected: key });
-     console.log(this.menuItems)
+   
    };
  
 

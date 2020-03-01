@@ -91,11 +91,7 @@ const AnimalCards = () => {
         }
     ]);
 
-     /* useEffect(() => {
-        setCards(cards)
-       
   
-      }, [cards]);  */
 
 
       const handleModal= (picture) => {
@@ -126,19 +122,6 @@ const AnimalCards = () => {
 
 }
 export default AnimalCards
-
-/* const mapStateToProps = (state) => {
-    return {
-        
-    }
-};
-
-const mapDispatchToProps = dispatch => ({
- 
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(AnimalCards);
- */
 
 
 

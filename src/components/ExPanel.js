@@ -49,26 +49,6 @@ function ExPanel() {
   }
 
 
- /* 
-  const [active, setActive]= useState([
-    { question: '0', open: false },
-    { question: '1', open: false },
-    { question: '2', open: false },
-    { question: '3', open: false },
-    { question: '4', open: false },
-    { question: '5', open: false },
-  ])
-    
-    const handleClick = index => {
-      const update = [...active, {'question':index}]
-        update[index].open = true
-        setActive(update);
-      };
-      
-
-
- */
-
                         
   return (
 
@@ -90,30 +70,3 @@ export default ExPanel
 
 
 
-
-
-
-   /*  <div className={classes.root}>
-    {items.map((item, index) => (
-      <ExpansionPanel key = {index} style = {{backgroundColor:'transparent', boxShadow:'none', margin:'none'} }>
-      <ExpansionPanelSummary
-
-        style={{ padding:'none', margin:'none' }}
-        expandIcon={<ExpandMoreIcon />}
-       aria-controls="panel1a-content"
-        id= {index}
-      >
-        <Typography className={classes.heading} style={{fontSize:'18px', boxShadow:'none', color:'#54637a'}}>{item.q}</Typography>
-      </ExpansionPanelSummary>
-      <ExpansionPanelDetails  style={{ padding:'0 0', }}>
-        <Typography style={{fontSize:'10px', boxShadow:'none',   color:'#54637a'}}>
-          {item.a}
-        </Typography>
-      </ExpansionPanelDetails>
-    </ExpansionPanel>
-
-
-    )
-    )}   
-    </div> */
- 

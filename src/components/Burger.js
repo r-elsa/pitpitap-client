@@ -12,29 +12,6 @@ const Burger = props => {
 
     const [open, setOpen] = useState(false)
     const [activeItem, setActiveItem] = useState(props.activeRoute);
-
-/* 
-    const isExpanded = open ? true : false; */
-    
-  /*   useEffect(() => {
-        console.log(props.activeRoute)
-       
-    }, [])
- */
-
- /*    const handleLinkClick = (route) => {
-      props.chageRoute(route);
-      setActiveItem(route)
-      handleClick()
-     
-
-  }
- */
- 
-
-
-/*   {clickedOutside ? "Bye!" : "Hello!"} */
-
   
 
     return ( 

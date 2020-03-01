@@ -1,4 +1,4 @@
-import { grid, width,height, space, gridGap, gridTemplateColumns, background, gridTemplateRows, margin, padding } from 'styled-system';
+import { grid, width,height, space, gridGap, gridTemplateColumns, background, gridTemplateRows, margin, padding, overflow } from 'styled-system';
 import styled from 'styled-components';
 
 export default styled.div`
@@ -14,6 +14,21 @@ export default styled.div`
     ${height}
     ${padding}
     ${margin}
+    ${overflow}
+
+    &.scrollbar {
+        min-width: 100%;
+        overflow-x: auto;
+
+        ::-webkit-scrollbar {
+        display: none;
+    }
+
+  
+
+
+
+    }
 
 `;
 

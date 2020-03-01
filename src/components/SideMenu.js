@@ -13,25 +13,21 @@ const SideMenu = props => {
     const [open, setOpen] = useState(props)
     const [activeItem, setActiveItem] = useState(props.activeRoute);
  
-
-
-    
         useEffect(() => {
             document.addEventListener("click", handleOutsideClick, false);
-            console.log('hello from useeffect ')
+        
          
         return () => {
       
         document.removeEventListener("click", handleOutsideClick, false);
-        console.log('hello from useeffect 2 ')
+      
         }; 
          }, []);
 
 
 
          const handleOutsideClick = e => {
-             console.log('yhis is the e', e)
-          
+              
             if (node.current.contains(e.target)) {
         
             return;
