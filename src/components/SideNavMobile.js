@@ -8,9 +8,6 @@ import SideNav from './common/SideNav'
 const SideNavMobile = props => {
 
   
-  
-/*     const [open , setOpen] = useState('initial value');
- */
     return (
         <>
         <SideNav open ={props.open}>

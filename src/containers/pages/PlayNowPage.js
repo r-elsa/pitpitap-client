@@ -1,35 +1,37 @@
 
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Card, FlexContainer, Text, AbsoluteContainer, GridContainer, Image } from '../../components/common';
+import { Card, FlexContainer, Text, GridContainer, Image } from '../../components/common';
 import { userActions } from '../../store/user/actions';
-
 import cat_ic from '../../assets/images/home-animal.svg';
-import car_ic from '../../assets/images/cars.png';
-import home_ic from '../../assets/images/home.png';
-import music_ic from '../../assets/images/music.png';
-import wild_animal_ic from '../../assets/images/wild-animal.png';
-import outside_ic from '../../assets/images/outside.png';
-import food from '../../assets/images/food.png';
+import car_ic from '../../assets/images/cars.svg';
+import home_ic from '../../assets/images/home.svg';
+import music_ic from '../../assets/images/music.svg';
+import wild_animal_ic from '../../assets/images/wild-animal.svg';
+import outside_ic from '../../assets/images/outside.svg';
+import food from '../../assets/images/food.svg';
 import AnimalCards from '../../components/AnimalCards'
-
-
-
-
+import PromoPage from '../../components/PromoPage'
+import { backgroundColor } from 'styled-system';
+import fill_one from  '../../assets/images/fill-1.png';
 
 
 const PlayNowPage = props => {
 
     // here you can set all the variabled that you want to use them as a state for this function
-    const [variable, setVariable] = useState(props.initialValue)
+    const [play, setPlay] = useState(true)
+    const [active, setActive] = useState('')
+    const [width, setWidth] = useState(window.innerWidth)
 
-
-    // this function will call every time that that prop someValue will change,
-    // if you leave that array empty so it will call only after the render of the componenet
     useEffect(() => {
-        // some stuff :)
-        return 
-      }, [props.somaValue])
+        
+    const handleResize = () => {
+        setWidth(window.innerWidth)
+    }
+    window.addEventListener('resize', handleResize)
+        return () => { window.removeEventListener('resize', handleResize) }
+
+      }, [])
 
 
       const items = [
@@ -78,36 +80,60 @@ const PlayNowPage = props => {
           }
         ]
               
+        const handleClick = (i)=>{
+          setActive(i)     
+         
+             
+          {i === 0 ? (
+            setPlay(true)
+            
+          ) : (
+            setPlay(false)
+          )}
+          setActive(i)
+          
+        }
+
 
     return (
+        <FlexContainer flexDirection='column' alignItems='center'>
+         
+                { width < '800' && 
+
+                <GridContainer gridTemplateColumns= '1fr 3fr 1fr' gridTemplateRows= 'auto' gridGap= '0' margin='auto'height='5vh' width= {['70%','60%']} padding= '10rem 15rem'>
+                <Image src={fill_one} width='100%' margin='auto' style = {{transform: 'rotate(180deg)'}} />
+                <Text fontSize= '35rem'  fontFamily='Rounded1c_Medium' margin='auto'>שחקו עכשיו</Text>
+                <Image src={fill_one} width='100%'margin='auto' />
+                </GridContainer>
+                }
+
+          
 
 
-        <FlexContainer height='100%' flexDirection='column' alignItems='center'>
-           
-              
-         <GridContainer gridTemplateColumns= 'repeat(7, 1fr)' gridTemplateRows= '1fr' gridGap= '0' margin='5vh'  width='50vw' >
 
+
+
+
+         <GridContainer gridTemplateColumns= 'repeat(7, 1fr)' gridTemplateRows= '1fr' gridGap= '0' marginTop={['20rem','15rem']} width={['95vw', '50vw']} height = {['15vh', '16vh']}>
 
                 {
                    items.map((item, index) => (
-
-                    <div>
-                            <Image src={item.imgsrc} height='7vh'margin='auto'/>
-                            <Text fontSize='20rem' margin='auto'>{item.name}</Text>
-  
-
-                    </div>
+                    <span key={index} onClick ={() =>  handleClick(index)}>
+                        <Image src={item.imgsrc} background={active == index ? 'white': 'transparent'} height= {['45rem', '7vh']} borderRadius='40rem' margin='auto'  style = {{cursor:'pointer'}} />    
+                       
+                          }
+                            <Text fontSize= {['15rem','20rem']} fontFamily ={active == index ? 'Rounded1c_Black': 'Rounded1c_Regular'} margin='auto'>{item.name}</Text>
+                            <div style= {{height:'1px', bg:'red', width:'80%'}}></div>
+                    </span>
 
                    ))
                }
-                      
-                    
-                    
-                  </GridContainer>  
+                                 
+                  </GridContainer>  }
                
-                  <AnimalCards />
+              { play ?  <AnimalCards /> : <PromoPage /> }
              
-              
+                
 
               
 
@@ -130,3 +156,4 @@ const mapDispatchToProps = dispatch => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlayNowPage);
+

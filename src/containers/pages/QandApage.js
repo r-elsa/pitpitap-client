@@ -32,24 +32,26 @@ const QandApage = props => {
         <FlexContainer flexDirection='column' alignItems='center' justifyContent='flex-start'>
 
 
-            <GridContainer gridTemplateColumns= '1fr 2fr 1fr' gridTemplateRows= 'auto' gridGap= '0' margin='auto' height='10vh' width='35%' padding='20rem 30rem'> 
-                <Image src={fill_one} margin='auto' style = {{transform: 'rotate(180deg)'}} />
-                <Text fontSize='45rem' fontFamily='RoundedMplus1c-Medium' margin='auto'>שאלות ותשובות</Text>
-                <Image src={fill_one} margin='auto' />
+
+
+            <GridContainer gridTemplateColumns= {[ '1fr 2fr 1fr','1fr 2fr 1fr']} gridTemplateRows= 'auto' gridGap= '0' margin='auto' height={['5vh','10vh']}  width= {['90vw', '45vw']} padding='20rem 0'> 
+                <Image src={fill_one} width={['80%', '100%']} margin='auto' style = {{transform: 'rotate(180deg)'}} />
+                <Text fontSize= {['35rem', '45rem']} fontFamily='Rounded1c_Medium' margin='auto'>שאלות ותשובות</Text>
+                <Image src={fill_one} width={['80%', '100%']} margin='auto' />
                 
                </GridContainer>
 
               
-                <GridContainer gridTemplateColumns= 'repeat(2, 1fr)' gridTemplateRows= 'auto' gridGap= '5%' margin='30rem'  width='60vw' height='40vh' >
+                <GridContainer gridTemplateColumns= {['1fr','1fr 1fr']} gridTemplateRows= 'auto' gridGap= {['10%','0%' ]}margin='10rem' width={['90%','60%']} height='40vh' >
                
                     <div><ExPanel /></div> 
-                    <div style = {{ display:"inlineBlock"}}> <Image margin='auto' src={illustartion} height='40vh' margin='auto'/></div>
+                    <div style = {{ display:"inlineBlock"}}> <Image margin='auto' src={illustartion} height='45vh' margin='auto'/></div>
              
                 
                      </GridContainer>   
 
-                    <GridContainer gridTemplateColumns= '1fr' gridTemplateRows= '1fr 1fr' gridGap= '0' margin='auto' marginTop='100rem'>
-                     <Text fontSize='35rem' fontFamily='RoundedMplus1c-Bold' fontWeight= 'bold' margin='auto'>הורידו עכשיו</Text>
+                    <GridContainer gridTemplateColumns= '1fr' gridTemplateRows= '1fr 1fr' gridGap= '0' margin='auto' marginTop= {['560rem', '50rem']} marginBottom={['50rem', '0']} padding='30rem'>
+                     <Text fontSize={['25rem','35rem' ]} fontFamily='Rounded1c_Bold'  margin='auto' >הורידו עכשיו</Text>
 
                      <Download/>
                      </GridContainer>

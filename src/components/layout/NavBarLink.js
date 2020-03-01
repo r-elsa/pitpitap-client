@@ -4,33 +4,53 @@ import styled from 'styled-components';
 
 
 const StyledText = styled.p`
-    font-family: Assistant;
-    font-size: 30rem;
-    font-weight: 600;
+    font-family: ${props => props.fontFamily};
+    font-size: 36rem;
     font-style: normal;
     font-stretch: normal;
     line-height: normal;
     letter-spacing: normal;
     text-align: center;
-    color: white;
-    margin: 0 26rem;
+    margin: 65rem 25rem;
     cursor: pointer;
-    opacity: ${props => props.opacity}
-`
+    color: white;
+    opacity: ${props => props.opacity};
 
-export const ItemUnderLine = styled.div`
-    width: 87rem;
-    height: 4px;
+    
+@media(max-width: 1000px) {
+    display: flex;
+ 
+
+}`
+   
+
+
+const ItemUnderLine = styled.div`
+    width: 85%;
+    height: 1px;
     position: absolute;
-    bottom: 0;
+    bottom: -32rem;
     background-color: white;
+    margin-right:20rem;
+        
+/* @media(max-width: 1000px) {
+    
+
+} */
 `
 
 export default props => {
+
+
+   /*  console.log(props.children.length) */
     return (
-        <FlexContainer flexDirection='column' height='70rem' ml='30rem' {...props} style={{ position: 'relative' }}>
-            <StyledText color={props.active ? 'blue.2' : 'grey'}>{props.children}</StyledText>
-            {props.active ? <ItemUnderLine /> : null}
-        </FlexContainer>
+        <div flexDirection='column' height='100rem' ml='30rem' {...props} style={{ position: 'relative' }}>
+            <StyledText fontWeight={props.active ? '1000' : '300'} fontFamily={props.active ? 'Rounded1c_Black': 'Rounded1c_Regular'}>{props.children}</StyledText>
+           { <ItemUnderLine />} 
+        </div>
     )
 }
+
+
+
+

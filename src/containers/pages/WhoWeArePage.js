@@ -10,21 +10,23 @@ import bear_5 from '../../assets/images/bear-5.png';
 import bear_6 from '../../assets/images/bear-6.png';
 import bear_7 from '../../assets/images/bear-7.png';
 import bear_8 from '../../assets/images/bear-8.png';
-import fill_one from '../../assets/images/fill-1.png';
+import fill_one from '../../assets/images/fill-1.svg';
 
 
 
 const WhoWeArePage = props => {
 
-    // here you can set all the variabled that you want to use them as a state for this function
-    const [variable, setVariable] = useState(props.initialValue)
 
+    const [width, setWidth] = useState(window.innerWidth)
 
-    // this function will call every time that that prop someValue will change,
-    // if you leave that array empty so it will call only after the render of the componenet
     useEffect(() => {
-        // some stuff :)
-         
+        
+    const handleResize = () => {
+        setWidth(window.innerWidth)
+    }
+    window.addEventListener('resize', handleResize)
+        return () => { window.removeEventListener('resize', handleResize) }
+
       }, [])
 
 
@@ -80,48 +82,64 @@ const WhoWeArePage = props => {
                 job:'מעצבת'
             },
      
-         
-         
-
-
-
-
-
+           
+    
     ]
 
     return (
         <FlexContainer flexDirection='column' alignItems='center' justifyContent='flex-start'>
 
-        <GridContainer gridTemplateColumns= '1fr 2fr 1fr' gridTemplateRows= 'auto' gridGap= '0' margin='auto' height='10vh' width='35%' paddingTop='20rem'> 
-                <Image src={fill_one} margin='auto' style = {{transform: 'rotate(180deg)'}} />
-                <Text fontSize='45rem' fontFamily='RoundedMplus1c-Medium' margin='auto'>צוות פיטפיטאפ</Text>
-                <Image src={fill_one} margin='auto' />
+
+        <GridContainer gridTemplateColumns= {['1fr 2fr 1fr','1fr 2fr 1fr']}  gridTemplateRows= 'auto' gridGap= '0' margin='auto' height={['5vh','10vh']} width= {['80%', '45%']} padding= {['10rem', '7rem, 0rem,0rem']}> 
+                <Image src={fill_one} width={['90%', '100%']} margin='auto' style = {{transform: 'rotate(180deg)'}} />
+                <Text fontSize= {['30rem', '45rem']} fontFamily='Rounded1c_Medium' margin='auto' >צוות פיטפיטאפ</Text>
+                <Image width={['90%', '100%']} src={fill_one} margin='auto' />
                 
                </GridContainer>
 
+               <FlexContainer width= {['70vw', '40vw']}> 
 
-
-
-               <FlexContainer width='30vw'> 
-
-                <Text fontSize='22rem' fontFamily='RoundedMplus1c-Regular' margin='18rem 0rem 18rem 0rem'  lineHeight= '1.6'>הצוות שלנו משלב בתוכו שותפים מעולם הטכנולוגיה והקרייאטיב שיצרו
+                <Text fontSize='22rem' fontFamily='Rounded1c_Regular' margin='0rem 0rem 18rem 0rem' >הצוות שלנו משלב בתוכו שותפים מעולם הטכנולוגיה והקרייאטיב שיצרו
                                             באהבה עבור הילדים שלהם ושלכם את השילוב של משחק עם
                                             גלריית תמונות משפחתית וקטגוריות נוספות מעולם הילדים
                                             כך שילדנו יהנו מחוויה כייפית מוגנת ומלמדת</Text>
 
                  </FlexContainer > 
                  
-                <GridContainer gridTemplateColumns= 'repeat(5, 1fr)' gridTemplateRows= '1fr 1fr' gridGap= '60rem' margin='65rem auto'  >
+                <GridContainer gridTemplateColumns= {['1fr', 'repeat(5, 1fr)']} gridTemplateRows= '1fr 1fr' gridGap= '40rem' margin= '0'>
                
-               {
+
+                { width > '800' ? (
+               
                    items.map((item, index) => (
-
+                 
                     <div>
-                            <Image src={item.imgsrc} height='15vh'margin='auto'/>
-                            <Text fontSize='22rem' fontFamily='RoundedMplus1c-ExtraBold' fontWeight= 'bold' padding='5rem' margin='auto'>{item.name}</Text>
-                            <Text fontSize='15rem' fontFamily='RoundedMplus1c-Regular' margin='auto'>{item.job}</Text>
+                          
+                            <Image src={item.imgsrc} height='14vh'margin='auto' />
+                            <Text fontSize='22rem' fontFamily='Rounded1c_ExtraBold'  margin='auto'>{item.name}</Text>
+                            <Text fontSize='15rem' fontFamily='Rounded1c_Regular' margin='auto'>{item.job}</Text>
 
-                    </div>
+                    </div> ))):( 
+                        
+                        items.map((item, index) => (
+                       
+                        
+                            (!item.imgsrc == "") &&
+                   <div>
+                       
+                         <Image src={item.imgsrc} height='18vh'margin='auto' />
+                          <Text fontSize={['28rem','25rem']} fontFamily='Rounded1c_ExtraBold' padding='3rem' margin='auto'>{item.name}</Text>
+                         <Text fontSize={['25rem','20rem']} fontFamily='Rounded1c_Regular' margin='auto'>{item.job}</Text> 
+
+                 </div>
+ 
+
+                    )))
+
+
+                }
+
+                    
 
                    ))
                }

@@ -16,15 +16,7 @@ const ImageModal = props => {
         </Modal>
 
 
-      {/*   #overlay {
-  position:fixed;
-  left:0;
-  top:0;
-  width:100vw;
-  height:100vh;
-  display:none;
-  background-color:#000;
-  opacity:0.5; */}
+    
 }
 
 

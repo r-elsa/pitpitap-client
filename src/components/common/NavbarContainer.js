@@ -13,7 +13,7 @@ ${color}
 ${colorStyle}
 ${flexbox}
 ${layout}
-padding-left: 100rem;
+
 
 
 @media(max-width: 1000px) {

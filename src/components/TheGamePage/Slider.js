@@ -27,22 +27,22 @@ const Slider = ({slides}) => {
         <BoxContainer>
 
         <div></div>
-        <Text fontSize='18rem' fontWeight='bold' margin='auto'>אז איך משחקים?  </Text>
+        <Text fontSize='18rem' fontFamily='Rounded1c_Medium' margin='auto' marginBottom='0' >אז איך משחקים?  </Text>
         <div> </div>
-        <div style= {{textAlign:'right'}}> <Button onClick = {decrease}> &lt; </Button></div>
+        <div style= {{textAlign:'left'}}> <Button onClick = {decrease}> &lt; </Button></div>
 
          <SlideContainer>
                 
            {slides.map((slide,index) => (
                <Slide className ={index === curr ? "slide active": "slide"} key = {slide.title}>
-                   <Text fontSize='18rem'>{slide.title}</Text>
+                   <Text fontSize='18rem' fontFamily ='Rounded1c_Regular'>{slide.title}</Text>
                    
                
                </Slide>
            ))}
        
         </SlideContainer>
-        <div style= {{textAlign:'left'}}> <Button  onClick = {increase}> > </Button></div>
+        <div style= {{textAlign:'right'}}> <Button  onClick = {increase}> > </Button></div>
         <div></div>
         <div> {slides.map((slide,index) => (
 

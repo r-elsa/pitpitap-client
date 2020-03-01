@@ -1,28 +1,12 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import ExpansionPanel from '@material-ui/core/ExpansionPanel';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
-import Typography from '@material-ui/core/Typography';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    width: '100%',
-    color:'#54637a',
-    padding:'0 0' 
-    
-  },
-  heading: {
-    fontSize: theme.typography.pxToRem(15),
-    fontWeight: theme.typography.fontWeightRegular,
+import React, { useState, useEffect, useRef } from 'react';
+import { FlexContainer} from './common';
+import {ItemUnderLine, Question, Answer, Text} from '../components/ExpanelContainer'
 
-  
+import { ReactComponent as PlusIcon } from '../assets/images/plus.svg'
+import { ReactComponent as MinusIcon } from '../assets/images/minus.svg'
 
-  
-    
-  },
-}));
+
 
 const items = [{
                 q:'לאיזה גילאים מיועד פיטפיטאפ?',
@@ -45,15 +29,73 @@ const items = [{
               }]
 
 
-function ExPanel() {
-  const classes = useStyles();
 
+              
+function ExPanel() {
+ /*  const classes = useStyles();
+ */
  
+  const [active, setActive]= useState([])
   
+  const handleClick = (index)=>{
+
+    setActive(index)
+
+  }
+
+  const handleClose =(index) =>{
+    setActive(false)
+
+  }
+
+
+ /* 
+  const [active, setActive]= useState([
+    { question: '0', open: false },
+    { question: '1', open: false },
+    { question: '2', open: false },
+    { question: '3', open: false },
+    { question: '4', open: false },
+    { question: '5', open: false },
+  ])
+    
+    const handleClick = index => {
+      const update = [...active, {'question':index}]
+        update[index].open = true
+        setActive(update);
+      };
+      
+
+
+ */
+
+                        
   return (
-    <div className={classes.root}>
+
+      <div>
+           {items.map((item, index) => (
+             <div key = {index} style={{alignItems:'right', margin:'auto'}}>
+                <Question  padding={['15rem 0rem 15rem 0','10rem 0rem 10rem 0']}> {active === index ?  <MinusIcon style = {{cursor:'pointer', margin:'auto 0'}}  onClick={()=> handleClose(index)}/> : <PlusIcon style = {{cursor:'pointer', margin:'auto 0'}} marginTop='5rem' onClick={()=> handleClick(index)}/>} 
+                <Text alignItems='right' fontSize={['24rem','25rem']} fontFamily='Rounded1c_Bold' padding={['0rem 15rem 0rem 0rem','0rem 10rem 0rem 0rem']} >{item.q}</Text></Question>
+                <Answer className = {active === index ?'answer': ''}><Text fontSize={['20rem','20rem']} fontFamily='Rounded1c_Regular' padding={['0rem 55rem 15rem 15rem','0rem 40rem 10rem 10rem']} >{item.a}</Text></Answer>
+                <ItemUnderLine />
+           </div>
+           ))}
+     
+      </div>
+
+);
+}
+export default ExPanel
+
+
+
+
+
+
+   /*  <div className={classes.root}>
     {items.map((item, index) => (
-      <ExpansionPanel style = {{backgroundColor:'transparent', boxShadow:'none', margin:'none'} }>
+      <ExpansionPanel key = {index} style = {{backgroundColor:'transparent', boxShadow:'none', margin:'none'} }>
       <ExpansionPanelSummary
 
         style={{ padding:'none', margin:'none' }}
@@ -73,7 +115,5 @@ function ExPanel() {
 
     )
     )}   
-    </div>
-  );
-}
-export default ExPanel
+    </div> */
+ 

@@ -1,47 +1,50 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { ReactComponent as HamburgerMenu } from '../assets/images/menu.svg';
-import SideNavMobile from './SideNavMobile'
 import NavBarLink, { ItemUnderLine } from '../components/layout/NavBarLink';
 import { userActions } from '../store/user/actions'
 import { uiActions } from '../store/ui/actions';
+import Sidemenu from './SideMenu'
 
 
 const Burger = props => {
 
     const [open, setOpen] = useState(false)
-    const [activeItem, setActiveItem] = useState('orders');
+    const [activeItem, setActiveItem] = useState(props.activeRoute);
 
-
-    const isExpanded = open ? true : false;
+/* 
+    const isExpanded = open ? true : false; */
     
-    const handleLinkClick = (route) => {
+  /*   useEffect(() => {
+        console.log(props.activeRoute)
+       
+    }, [])
+ */
+
+ /*    const handleLinkClick = (route) => {
       props.chageRoute(route);
+      setActiveItem(route)
       handleClick()
+     
 
   }
+ */
+ 
 
-  const handleClick = ()=>{
-    setOpen(false)
-  }
 
+/*   {clickedOutside ? "Bye!" : "Hello!"} */
+
+  
 
     return ( 
       <>
-      <HamburgerMenu /* aria-label="Toggle menu" aria-expanded={isExpanded} */ open={open} onClick={() => setOpen(!open)} > </HamburgerMenu>
+      <HamburgerMenu /* aria-label="Toggle menu" aria-expanded={isExpanded} */ onClick={() => setOpen(!open)} />
 
-        <div className={`side-menu ${open ? 'open' : 'closed'}`}>
+       {open && <Sidemenu handleBurgerClick = {()=> setOpen(false)}   />
         
-        <div>
-        <NavBarLink active={activeItem === 'thegame'} onClick={() => handleLinkClick('thegame')}>המשחק</NavBarLink>
-        <NavBarLink active={activeItem === 'whoweare'} onClick={() => handleLinkClick('whoweare')}>מי אנחנו</NavBarLink>
-        <NavBarLink active={activeItem === 'playnow'} onClick={() => handleLinkClick('playnow')}> שחקו עכשיו</NavBarLink>
-        <NavBarLink active={activeItem === 'qanda'} onClick={() => handleLinkClick('qanda')}> שאלות ותשובות</NavBarLink>
-        <NavBarLink active={activeItem === 'contact'} onClick={() => handleLinkClick('contact')}>צרו קשר</NavBarLink>
-        </div>
-
-      </div>
+                            }
+  
        
       </>
 

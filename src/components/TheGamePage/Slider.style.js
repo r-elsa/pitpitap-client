@@ -26,14 +26,19 @@ export const NavigationItem = styled.li`
 `;
 export const BoxContainer = styled.div`
     display: grid;
-    grid-template-columns:1fr 3fr 1fr;
+    grid-template-columns:1fr 5fr 1fr;
     grid-template-rows: 1fr 2fr 1fr;
     grid-gap: 0%;
-    height:20vh;
+    height:25vh;
  /*    direction: ltr; */
-    margin-top:70rem;
+    margin-top:30rem;
   
+  @media (max-width:800px){
+    grid-template-columns:1fr 5fr 1fr;
+    height: 25vh;
+    width:95vw;
 
+  }
 
 `;
 
@@ -66,6 +71,7 @@ export const Slide = styled.div`
 export const Button = styled.button`
     border:none;
     background:transparent;
+    cursor: pointer;
    
 
     &.right{

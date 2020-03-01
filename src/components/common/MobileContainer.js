@@ -13,7 +13,7 @@ ${colorStyle}
 ${flexbox}
 ${layout}
 
-@media(max-width: 1000px) {
+@media(max-width: 800px) {
         display:flex;
         justify-content: flex-end;
     

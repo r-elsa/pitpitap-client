@@ -9,6 +9,7 @@ import Login from './Login';
 import AppHeader from './../components/layout/AppHeader';
 import AppFooter from './../components/layout/AppFooter';
 import { userActions } from '../store/user/actions';
+import { GlobalStyle }from '../components/globalStyles'
 
 
 // this is the first page of the app
@@ -17,23 +18,20 @@ import { userActions } from '../store/user/actions';
 
 const App = props => {
 
-  // this function is called only onced when the app is started
-  // in this place you can put all the inital called for getting user data
+
   useEffect(() => {
     let localUser = JSON.parse(localStorage.getItem('localUser')) || {};
-    // props.logIn(localUser.token);
+
   }, [])
 
   return (
     <ThemeProvider theme={theme}>
       <div className="app-container">
+      <GlobalStyle />
         <div className="main-container" >
-      {/*     <div className = ></div> */}
+
           <div className='app-header'><AppHeader /></div>
-          {
-            /* Application with login */
-            // props.loggedIn ? <BrowserRouter><Main /></BrowserRouter> : <Login />
-          }
+         
           {
             /* Application without login */
             <BrowserRouter><Main /></BrowserRouter>

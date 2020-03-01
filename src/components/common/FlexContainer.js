@@ -1,5 +1,5 @@
 import React from 'react';
-import { space, layout, flexbox, colorStyle, color, border, shadow } from 'styled-system';
+import { space, layout, flexbox, colorStyle, color, border, shadow} from 'styled-system';
 import styled from 'styled-components';
 
 export default styled.div`
@@ -15,8 +15,9 @@ ${flexbox}
 ${layout}
 
 
-@media(max-width: 1000px) {
-    display: flex;
+@media(max-width: 800px) {
+  display: flex;
   justify-content: space-between;
+  ${space}
 
 }`;

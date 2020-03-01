@@ -8,13 +8,10 @@ const appGreyColor = '#979797';
 const appRedColor = '#ff3838';
 const appBlackColor = '#000000';
 
-const breakpoints = ['40em', '52em', '64em', '80em']
+const breakpoints = ['800px', '1600px']
 // aliases
 {/* <Box width={{ _: 1, sm: 1, md: 1 / 2, lg: 1 / 4 }} /> */}
-breakpoints.sm = breakpoints[0]
-breakpoints.md = breakpoints[1]
-breakpoints.lg = breakpoints[2]
-breakpoints.xl = breakpoints[3]
+
 
 
 export const theme = {
@@ -34,11 +31,11 @@ export const theme = {
     mega: '0.25rem',
   },
   fonts: {
-    heebo: "'Heebo', sans-serif",
+    /* heebo: "'Heebo', sans-serif",
     anton: "'Anton', sans-serif",
     raleway: "'Raleway', sans-serif",
     muli: "'Muli', sans-serif",
-    serif: 'athelas, georgia, times, serif',
+    serif: 'athelas, georgia, times, serif', */
   },
   borders: [0, '1px solid'],
   radii: [0, 2, 4, 16, 9999, '50%', '100%'],
@@ -89,10 +86,10 @@ export const theme = {
         color: 'white'
       }
     },
-    appContainer: {
+/*     appContainer: {
       color: appBlackColor,
       backgroundColor: 'white'
-    },
+    }, */
     blueContainer: {
       color: 'white',
       backgroundColor: appBluesColors[0]
@@ -102,7 +99,7 @@ export const theme = {
     login: {
       color: 'white',
       backgroundColor: appBluesColors[0],
-      fontFamily: 'Raleway',
+      fontFamily: 'RoundedMplus1c',
       fontSize: '20rem',
       width: '273rem',
       height: '45rem',

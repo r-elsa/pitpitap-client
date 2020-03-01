@@ -13,17 +13,20 @@ import Download from '../../components/Download'
 
 
 const ContactPage = props => {
-
-    // here you can set all the variabled that you want to use them as a state for this function
-    const [variable, setVariable] = useState(props.initialValue)
+    const [width, setWidth] = useState(window.innerWidth)
 
 
     // this function will call every time that that prop someValue will change,
     // if you leave that array empty so it will call only after the render of the componenet
     useEffect(() => {
-        // some stuff :)
-         
+        
+    const handleResize = () => {
+        setWidth(window.innerWidth)
+    }
+    window.addEventListener('resize', handleResize)
+        return () => { window.removeEventListener('resize', handleResize) }
       }, [])
+
 
 
       const items = [
@@ -48,32 +51,30 @@ const ContactPage = props => {
 
     return (
         <FlexContainer flexDirection='column' alignItems='center' justifyContent='flex-start'>
-
-<               GridContainer gridTemplateColumns= '1fr 2fr 1fr' gridTemplateRows= 'auto' gridGap= '0' margin='auto' height='10vh' width='30%' padding='20rem 50rem'> 
-                <Image src={fill_one} margin='auto' style = {{transform: 'rotate(180deg)'}} />
-                <Text fontSize='45rem' fontFamily='RoundedMplus1c-Medium' margin='auto'>צרו קשר</Text>
-                <Image src={fill_one} margin='auto' />
+    
+                <GridContainer gridTemplateColumns= {['1fr 2fr 1fr','1fr 2fr 1fr']} gridTemplateRows= 'auto' gridGap= '0' margin='auto'height={['5vh','10vh']} width= {['60%', '35%']} padding= {['10rem 25rem','20rem 50rem']}> 
+                <Image src={fill_one} width={['100%', '100%']} margin='auto' style = {{transform: 'rotate(180deg)'}} />
+                <Text fontSize= {['40rem', '45rem']}  fontFamily='Rounded1c_Medium' margin='auto' >צרו קשר</Text>
+                <Image src={fill_one} width={['100%', '100%']}margin='auto' />
                 
                </GridContainer>
-                <GridContainer gridTemplateColumns= 'repeat(3, 1fr)' gridTemplateRows= '1fr' gridGap= '3%' margin='2vh'  width='50vw' height='35vh' marginTop='50rem'>
+                <GridContainer gridTemplateColumns= {['1fr','repeat(3, 1fr)']} gridTemplateRows= '1fr' gridGap= {['5%','3%']} margin='2vh'  width='50vw' height='35vh' marginTop='50rem'>
 
 
                 {
                    items.map((item, index) => (
 
-                    <div>
-                            <Image src={item.imgsrc} height='17vh'margin='auto'/>
-                            <Text fontSize='25rem' fontFamily='RoundedMplus1c-ExtraBold' margin='auto' fontWeight='bold' padding='5rem'>{item.title}</Text>
-                            <Text fontSize='20rem' fontFamily='RoundedMplus1c-Regular' margin='auto'>{item.info}</Text>
-
+                    <div key = {index}>
+                            <Image src={item.imgsrc} height={['14vh','19vh']} margin='auto'/>
+                            <Text fontSize='25rem' fontFamily='Rounded1c_ExtraBold' margin='auto' padding='5rem'>{item.title}</Text>
+                            <Text fontSize='20rem' fontFamily='Rounded1c_Regular' margin='auto'>{item.info}</Text>
                     </div>
-
                    ))
                }
               
                      </GridContainer>   
-                     <GridContainer gridTemplateColumns= '1fr' gridTemplateRows= '1fr 1fr' gridGap= '0' margin='auto' marginTop='130rem'>
-                     <Text fontSize='35rem' fontFamily='RoundedMplus1c-Bold' fontWeight= 'bold' margin='auto'>הורידו עכשיו</Text>
+                     <GridContainer gridTemplateColumns= '1fr' gridTemplateRows= '1fr 1fr' gridGap= '0' margin='auto' marginTop={['350rem', '60rem']}  marginBottom={['50rem', '0rem']}>
+                     <Text fontSize={['25rem', '35rem']} fontFamily='Rounded1c_Bold' margin='auto'>הורידו עכשיו</Text>
                      <Download/>
                      </GridContainer>
         </FlexContainer>

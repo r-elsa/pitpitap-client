@@ -16,6 +16,7 @@ import bird from '../assets/images/bird.png';
 import horse from '../assets/images/horse.png';
 import { Card, FlexContainer, Text, AbsoluteContainer, GridContainer, Image } from '../components/common';
 import ImageModal from './ImageModal'
+import GreyBackground from './GreyBackground';
 
 
 const AnimalCards = () => {
@@ -98,29 +99,30 @@ const AnimalCards = () => {
 
 
       const handleModal= (picture) => {
-          console.log(picture)
          setActiveCard(picture)
-          openModal()
+         openModal()
 
 
       }
   
    
         return (
-         <GridContainer gridTemplateColumns= 'repeat(4, 1fr)' gridTemplateRows='repeat(3, 1fr)' gridGap= '1vw' margin='auto'>
+      
+         <GridContainer gridTemplateColumns= {['repeat(3, 1fr)', 'repeat(4, 1fr)']} gridTemplateRows='repeat(3, 1fr)' gridGap= '1vw' margin='auto'>
              
 
          {cards.map((card,index) => (   
-         <Image key={index} src={card.animal} height='18vh'margin='auto' onClick= {() => handleModal(card.pic_url)}/>
+         <Image key={index} src={card.animal}  height= {['auto', '18vh']} width ={['100%', 'auto']} margin='auto' onClick= {() => handleModal(card.pic_url)} style = {{cursor:'pointer'}}/>
        
 
-    ))}  
-      <ImageModal closeModal={closeModal} show={show} activeCard={activeCard}></ImageModal>
+            ))}  
+         {show && <GreyBackground> <ImageModal closeModal={closeModal} show={show} activeCard={activeCard}></ImageModal>  </GreyBackground> } 
+  
                 </GridContainer>
            
      )
-      
-   
+    
+
 
 }
 export default AnimalCards

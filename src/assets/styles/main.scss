@@ -2,7 +2,7 @@
 // use @import "./assets/styles/example.scss";
 
 .main-container {
-  background-image: url(../images/bkg.png);
+
   text-align: center;
   min-height: 100vh;
   display: grid;
@@ -12,6 +12,7 @@
   &-body {
     display: grid;
     grid-template-columns: 350rem auto;
+
   }
 }
 
@@ -24,35 +25,6 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
-.side-menu {
-
-  @media(max-width: 1000px) {
-    
-    width: 227px;
-    height: 100%;
-    background: #54637a;
-    transition: all 0.3s linear; 
-    transform-origin: 1px;
-    top:0;
-    right:0;
-    position:fixed;
-    color:white;
-    z-index:1000;
- 
-
-    
-  &.open {
-    display:block;
-    
-  }
-  &.closed {
-    display:none;
-  
-
-  }
-
-  }
-}
 
 
  

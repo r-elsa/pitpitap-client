@@ -20,12 +20,13 @@ import Span from './Span';
 import ColoredCircle from './ColoredCircle';
 import BorderBox from './BorderBox';
 import FileInput from './FileInput';
-import MobileContainer from './MobileContainer'
-import NavbarContainer from './NavbarContainer'
+import MobileContainer from './MobileContainer';
+import NavbarContainer from './NavbarContainer';
+import DownloadContainer from './DownloadContainer'
 
 
 export {
     Button, CheckBox, FlexContainer, TextArea, Menu, CloseSign, AbsoluteContainer, SvgContainer,
     GridContainer, Box, Container, Card, Text, FlexText, Input, Image, Link, Span, RelativeContainer,
-    ColoredCircle, BorderBox, FileInput, MobileContainer, NavbarContainer
+    ColoredCircle, BorderBox, FileInput, MobileContainer, NavbarContainer, DownloadContainer
 }

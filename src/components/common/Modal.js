@@ -28,8 +28,18 @@ left:20vw;
 
   }
 
-@media(max-width: 1000px) {
-    
+@media(max-width: 800px) {
+  width: 100vw;
+  height:100vh;
+  background-size:contain;
+  background-repeat:no-repeat;
+  position: absolute;
+  transition: transform 0.2s ease;
+  text-align:right;
+  left:0;
+  top:25%;
+
+
 }
 `;
 
@@ -42,21 +52,14 @@ padding: 15rem 20rem;
 font-size:20em;
 
 
+@media(max-width: 800px) {
+  color:rgb(255, 255, 255);
+  font-size:27em;
+
+}
+
+
 
 
 `;    
  
-/*   
-  .modal button {
-    position: absolute;
-    right: -1rem;
-    top: -1rem;
-    width: 2rem;
-    height: 2rem;
-    padding: 0.5rem;
-    margin: 0 auto;
-    border-radius: 50%;
-    box-shadow: 1px 1px 1px #0000003a;
-    cursor: pointer;
-    border: 1px solid rgba(0, 0, 0, 0.562);
-  } */

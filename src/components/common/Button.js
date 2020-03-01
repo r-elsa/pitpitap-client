@@ -4,7 +4,7 @@ import styled from 'styled-components';
 export default styled.button`
 margin: 10rem;
 font-size: 18rem;
-font-family: "Heebo";
+font-family: "RoundedMplus1c";
 font-weight: 300;
 border-radius: 5rem;
 border: none;

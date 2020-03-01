@@ -11,7 +11,8 @@ import logoSource from './../../assets/images/logo.jpg';
 import pitpitaplogo from './../../assets/images/pitpitap.png';
 import { ReactComponent as CartIcon } from './../../assets/images/cart-icon.svg'
 import Burger from './../Burger'
-import  SideMenu from './SideMenu'
+import '../globalStyles'
+
 
 import { MobileContainer } from '../common';
 
@@ -25,7 +26,6 @@ justify-content: center;
 align-items: center;
 font-size: 11rem; 
 font-weight: 800;
-font-family: Assistant;
 color: white;
 background-color: #ff3838;
 `
@@ -145,7 +145,7 @@ const AppHeader = props => {
             </NavbarContainer>
             <FlexContainer>
                 
-            <Image src={pitpitaplogo} width='160rem' height='40rem' />
+            <Image src={pitpitaplogo} width='auto' height={['30rem','40rem']} />
                {/*  {loggedIn || true &&
                     <RelativeContainer className='pointer'>
                         <FlexContainer flexDirection='column' height='85rem' {...props} style={{ position: 'relative' }}>

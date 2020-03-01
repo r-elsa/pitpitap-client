@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 
 export const StyledText = styled.p`
-  font-family: RoundedMplus1c;
+  font-family: ${props => props.fontFamily};
   font-weight: 900;
   font-stretch: normal;
   font-style: normal;
@@ -16,7 +16,7 @@ export const StyledText = styled.p`
     text-align: center;
     color: #54637a;
     cursor: pointer;
-    opacity: ${props => props.opacity}
+    opacity: ${props => props.opacity};
 `
 
 export const ItemUnderLine = styled.div`
@@ -30,7 +30,7 @@ export const ItemUnderLine = styled.div`
 export default props => {
     return (
         <FlexContainer flexDirection='column' height='52rem' ml='65rem' {...props} style={{ position: 'relative' }}>
-            <StyledText>{props.children}</StyledText>
+            <StyledText fontFamily={props.active ? 'Rounded1c_Black': 'Rounded1c_Regular'}>{props.children}</StyledText>
             {props.active ? <ItemUnderLine /> : null}
         </FlexContainer>
     )

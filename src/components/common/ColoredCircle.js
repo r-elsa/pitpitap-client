@@ -8,7 +8,7 @@ display: flex;
 justify-content: center;
 align-items: center;
 font-size: 12rem;
-font-family: Assistant;
+font-family: RoundedMplus1c;
 font-weight: 600;
 margin-right: 10rem;
 color: ${props => props.color};
