@@ -44,16 +44,16 @@ export const BoxContainer = styled.div`
 
 export const SlideContainer = styled.div`
   margin:auto;
-  padding :30rem 10rem 10rem 10rem;
+  padding :30rem 10rem 0rem 10rem;
 /*    background:red; */
-    width:35vw;
-     height:15vh;
+    width:35vw;  
      direction:rtl;
       margin-top:30rem;
-
+      margin-bottom:80rem;
+  
 @media (max-width:800px){
-  width:90vw;
-  height:5vh;
+   width:80vw; 
+ 
 
 }
 
@@ -67,23 +67,9 @@ export const SlideContainer = styled.div`
 `;
 
 
-export const Style = styled.div`
- width:35vw;
- height:10vh;
- `
 
-/* 
- export const Slide = styled.div`
-    width:40vw;
-  
-  
-
-    @media (max-width:800px){
-    width:80vw;
  
 
-}
-`;   */
  
 /* export const Button = styled.button`
     border:none;

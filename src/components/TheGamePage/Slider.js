@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { FlexContainer, Text, GridContainer, Image, SvgContainer} from '../../components/common'; 
 import { Navigation, NavigationItem, BoxContainer, SlideContainer, Slide, Button } from './Slider.style'
 
-const SimpleSlider = ({slides}) => {
+const SimpleSlider = ({slides, isMobile}) => {
 
 /*     const [slide, setSlide] = useState(slides); */
 
@@ -25,11 +25,11 @@ const SimpleSlider = ({slides}) => {
          <SlideContainer>
              <Text fontSize='20rem' fontFamily='Rounded1c_Medium' margin='auto' marginBottom='0' >אז איך משחקים?  </Text>
         <Slider {...settings}>
-         
+          
 
         {slides.map((slide,index) => (
-               <div style={{width:'35vw' /* 90vw */, height:'10vh'}} key = {slide.id}>
-                   <Text style={{fontSize:'18rem', fontFamily :'Rounded1c_Regular'}}>{slide.title}</Text>
+               <div style={{width: isMobile ? "35vw" : "80vw"  }} key = {slide.id}>
+                   <Text fontSize='18rem' fontFamily ='Rounded1c_Regular'>{slide.title}</Text>
                    
                
                    </div>

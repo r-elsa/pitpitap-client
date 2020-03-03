@@ -34,8 +34,10 @@ const TheGamePage = ({breakpoint, renderMobile, renderDesktop}) => {
       /* return (width > breakpoint ? renderDesktop() : renderMobile())
     } */
 
+    const isMobile = width > 800
+
     return (
-        width > '800' ? (
+        isMobile ? (
         <FlexContainer flexDirection='column' alignItems='center'>
 
 
@@ -57,10 +59,9 @@ const TheGamePage = ({breakpoint, renderMobile, renderDesktop}) => {
 
         <Download/>
         
-              <SimpleSlider slides={defaultSlides}/></div>
+              <SimpleSlider slides={defaultSlides} isMobile={isMobile}/></div>
 
-      {/*   <Slider slides = {defaultSlides} margin='auto'/> */}
-      
+    
         <Image src={group_four} height='70vh' m='15rem auto' />
           
         </GridContainer>
@@ -91,7 +92,7 @@ const TheGamePage = ({breakpoint, renderMobile, renderDesktop}) => {
 
         <Image src={group_four} height='65vh' m='auto'  padding = '40rem 10rem 10rem 10rem' />
 
-        <SimpleSlider slides ={defaultSlides}/>
+        <SimpleSlider slides ={defaultSlides} isMobile={isMobile}/>
 
       {/*   <Slider slides = {defaultSlides} margin='auto'/> */}
 
