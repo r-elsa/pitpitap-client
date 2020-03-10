@@ -44,7 +44,7 @@ export default props => {
 
    /*  console.log(props.children.length) */
     return (
-        <div flexDirection='column' height='100rem' ml='30rem' {...props} style={{ position: 'relative' }}>
+        <div flexdirection='column' height='100rem' ml='30rem' {...props} style={{ position: 'relative' }}>
             <StyledText fontWeight={props.active ? '1000' : '300'} fontFamily={props.active ? 'Rounded1c_Black': 'Rounded1c_Regular'}>{props.children}</StyledText>
            { <ItemUnderLine />} 
         </div>

@@ -7,8 +7,10 @@ import group_six from '../../assets/images/group-6.png';
 import bigpitpitap from  '../../assets/images/pitpitap.png';
 import fill_one from  '../../assets/images/fill-1.svg';
 import SimpleSlider from '../../components/TheGamePage/Slider'
-import defaultSlides from '../../components/TheGamePage/defaultSlides';
+/* import defaultSlides from '../../components/TheGamePage/defaultSlides'; */
 import Download from '../../components/Download'
+import axios from 'axios'
+
 
 
 
@@ -18,21 +20,82 @@ const TheGamePage = ({breakpoint, renderMobile, renderDesktop}) => {
 
     // here you can set all the variabled that you want to use them as a state for this function
     const [width, setWidth] = useState(window.innerWidth)
+    
+const [items, setItems] = useState([]);
+
+const apiUrl = "http://localhost:9000/api/slides";
 
 
     // this function will call every time that that prop someValue will change,
     // if you leave that array empty so it will call only after the render of the componenet
     useEffect(() => {
-        
+
+
+      
+    const fetchData = async () => {
+   
+      const result = await axios(apiUrl);
+    
+      setItems(result.data);
+      console.log('INSIDE ',items)
+    
+   /*    setShowLoading(false); */
+    
+     };
+            
     const handleResize = () => {
         setWidth(window.innerWidth)
     }
+    fetchData();
     window.addEventListener('resize', handleResize)
         return () => { window.removeEventListener('resize', handleResize) }
       }, [])
 
       /* return (width > breakpoint ? renderDesktop() : renderMobile())
     } */
+
+/* 
+
+    const postRequest = (activeId, valid_pin, callback) => {
+  
+
+        const input = {
+          ride_id: activeId,
+          pin: valid_pin,
+          token: '433898df4a3e992b8411004109e4d574a90695e39e'
+        }
+        axios
+          .post('http://fast-rider.herokuapp.com/api/v1/tickets', input)
+          .then(response => {
+            callback(response.data)
+          
+            return response.data 
+          })
+    
+        
+        }
+
+
+
+        ///////////////////////////////////////////////////////////
+
+
+
+
+          axios
+      .get('http://fast-rider.herokuapp.com/api/v1/rides?token=433898df4a3e992b8411004109e4d574a90695e39e')
+      .then(response => {
+    
+        console.log(response.data)
+        props.setNotes(response.data)
+        
+      })
+  }, [])
+
+      
+
+ */
+
 
     const isMobile = width > 800
 
@@ -59,7 +122,7 @@ const TheGamePage = ({breakpoint, renderMobile, renderDesktop}) => {
 
         <Download/>
         
-              <SimpleSlider slides={defaultSlides} isMobile={isMobile}/></div>
+              <SimpleSlider slides={items} isMobile={isMobile}/></div>
 
     
         <Image src={group_four} height='70vh' m='15rem auto' />
@@ -92,7 +155,7 @@ const TheGamePage = ({breakpoint, renderMobile, renderDesktop}) => {
 
         <Image src={group_four} height='65vh' m='auto'  padding = '40rem 10rem 10rem 10rem' />
 
-        <SimpleSlider slides ={defaultSlides} isMobile={isMobile}/>
+        <SimpleSlider slides ={items} isMobile={isMobile}/>
 
       {/*   <Slider slides = {defaultSlides} margin='auto'/> */}
 

@@ -10,7 +10,6 @@ background-color: rgba(65, 77, 94, 0.8);
 left:0;
 top: 0;
 position: fixed;
-  
 
 `;
 

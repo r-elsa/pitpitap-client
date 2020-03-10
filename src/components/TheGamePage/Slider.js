@@ -28,7 +28,7 @@ const SimpleSlider = ({slides, isMobile}) => {
           
 
         {slides.map((slide,index) => (
-               <div style={{width: isMobile ? "35vw" : "80vw"  }} key = {slide.id}>
+               <div style={{width: isMobile ? "35vw" : "80vw"  }} key = {slide.title}>
                    <Text fontSize='18rem' fontFamily ='Rounded1c_Regular'>{slide.title}</Text>
                    
                

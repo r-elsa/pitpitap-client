@@ -11,22 +11,43 @@ import appleicon from '../../assets/images/app-store-badge-us-black.png';
 import google_icon from '../../assets/images/google-play-badge-us.png';
 import Download from '../../components/Download'
 
+import axios from 'axios';
 
 
 
 
-const QandApage = props => {
+const QandApage = () => {
 
     // here you can set all the variabled that you want to use them as a state for this function
-    const [variable, setVariable] = useState(props.initialValue)
+    const [items, setItems] = useState([]);
+
+    const apiUrl = "http://localhost:9000/api/qandas";
 
 
-    // this function will call every time that that prop someValue will change,
-    // if you leave that array empty so it will call only after the render of the componenet
+/*     const [showLoading, setShowLoading] = useState(true); */
+   
+
     useEffect(() => {
-        // some stuff :)
-         
-      }, [])
+
+        const fetchData = async () => {
+       
+         const result = await axios(apiUrl);
+       
+         setItems(result.data);
+         console.log('INSIDE ',items)
+       
+      /*    setShowLoading(false); */
+       
+        };
+       
+        fetchData();
+       
+       }, []);
+       
+
+       console.log('OUTSIDE',items)
+
+
 
     return (
         <FlexContainer flexDirection='column' alignItems='center' justifyContent='flex-start'>
@@ -44,7 +65,7 @@ const QandApage = props => {
               
                 <GridContainer gridTemplateColumns= {['1fr','1fr 1fr']} gridTemplateRows= 'auto' gridGap= {['10%','0%' ]}margin='10rem' width={['90%','60%']} height='40vh' >
                
-                    <div><ExPanel /></div> 
+                    <div><ExPanel items={items}/></div> 
                     <div style = {{ display:"inlineBlock"}}> <Image margin='auto' src={illustartion} height='45vh' margin='auto'/></div>
              
                 

@@ -1,13 +1,14 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { FlexContainer} from './common';
+import axios from 'axios'
 import {ItemUnderLine, Question, Answer, Text} from '../components/ExpanelContainer'
 
 import { ReactComponent as PlusIcon } from '../assets/images/plus.svg'
 import { ReactComponent as MinusIcon } from '../assets/images/minus.svg'
 
 
-
+/* 
 const items = [{
                 q:'לאיזה גילאים מיועד פיטפיטאפ?',
                 a:'פיטפיטאפ מיועד לגילאי הגיל הרך: מגיל שנה עד 4, אך כמובן שהוא גם משחק לכל בני המשפחה.'
@@ -26,12 +27,13 @@ const items = [{
               },{
                 q:'לאן הכסף של התרומה הולך?',
                 a:'This is the answer'
-              }]
+              }] */
+
+        
 
 
+  const ExPanel = ({items}) => {          
 
-              
-function ExPanel() {
  /*  const classes = useStyles();
  */
  

@@ -13,7 +13,6 @@ export default styled.div`
     ${background}
     ${height}
     ${padding}
-    ${margin}
     ${overflow}
 
     &.scrollbar {
