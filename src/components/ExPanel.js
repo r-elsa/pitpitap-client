@@ -58,8 +58,8 @@ const items = [{
            {items.map((item, index) => (
              <div key = {index} style={{alignItems:'right', margin:'auto'}}>
                 <Question  padding={['15rem 0rem 15rem 0','10rem 0rem 10rem 0']}> {active === index ?  <MinusIcon style = {{cursor:'pointer', margin:'auto 0'}}  onClick={()=> handleClose(index)}/> : <PlusIcon style = {{cursor:'pointer', margin:'auto 0'}} marginTop='5rem' onClick={()=> handleClick(index)}/>} 
-                <Text alignItems='right' fontSize={['24rem','25rem']} fontFamily='Rounded1c_Bold' padding={['0rem 15rem 0rem 0rem','0rem 10rem 0rem 0rem']} >{item.q}</Text></Question>
-                <Answer className = {active === index ?'answer': ''}><Text fontSize={['20rem','20rem']} fontFamily='Rounded1c_Regular' padding={['0rem 55rem 15rem 15rem','0rem 40rem 10rem 10rem']} >{item.a}</Text></Answer>
+                <Text alignItems='right' fontSize={['24rem','25rem']} fontFamily='Rounded1c_Bold' padding={['0rem 15rem 0rem 0rem','0rem 10rem 0rem 0rem']} >{item.question}</Text></Question>
+                <Answer className = {active === index ?'answer': ''}><Text fontSize={['20rem','20rem']} fontFamily='Rounded1c_Regular' padding={['0rem 55rem 15rem 15rem','0rem 40rem 10rem 10rem']} >{item.answer}</Text></Answer>
                 <ItemUnderLine />
            </div>
            ))}

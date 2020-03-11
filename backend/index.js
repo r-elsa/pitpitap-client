@@ -8,19 +8,12 @@ const Joi = require('joi')
 const express = require('express');
 
 
-const mongoose = require('mongoose');
 
-mongoose.connect("mongodb://localhost:27017/pitpitap_db",  { useNewUrlParser: true, useUnifiedTopology: true}, (error)=>{
-    if(!error){
-        console.log('Success')
-    }
-    else{
-        console.log("Error connecting to Mongo db database");
-        
-    }
+///connecting to mongo db
+const connection = require('./mongo')
+const questionsAnswers = require('./mongo/qandas')
+const slides = require('./mongo/slides')
 
-
-})
 
 
 
@@ -47,7 +40,7 @@ app.use(express.json())
 //method takes two arguments - 1. root of website 2. callback function when we have an http get request to this endpoint 
 //(2 arguments, request and responds) both have properties -- req- gives information about incoming request (req.app, req.baseUrl, req.body .. )
 //read more at expressjs.com - API reference - 
-
+/* 
     const qandas = [
 
         {   id:1,
@@ -73,10 +66,10 @@ app.use(express.json())
             id:6,
             q:'לאן הכסף של התרומה הולך?',
             a:'This is the answer'
-          }]
+          }] */
 
 
-          const defaultslides = [
+ /*          const defaultslides = [
 
             {
                 id:1,
@@ -94,9 +87,9 @@ app.use(express.json())
                 id:4,
                 title:'4. כאשר תסיימו להוסיף את כל התמונוץ שתרצו לחצו על כפתור ״העלאת  אוסף״ וזהו האוסף שלכם יעלה ותוכלו להתחיל לשחק בו :)', 
             }]
+         */
+
         
-
-
 
 //DEFINE A ROUTE:
 app.get('/', (req, res) =>{
@@ -106,12 +99,69 @@ app.get('/', (req, res) =>{
 })
 
 app.get('/api/qandas', (req,res) => {
-    res.send(qandas);
+
+
+
+    questionsAnswers.find({ }, function(err, data) { 
+    
+
+    
+    res.send(data)
+
+});
+
+
+
+
+
+ 
+  /*   questionsAnswers.find({ }, function (err, data) { console.log('FROM BACKEND', err, data);}); */
+
+   /* try {
+        const qas = await qas.find()
+        console.log('this is qas', qas)
+        res.send(qas)
+
+
+
+
+      } catch (err) {
+          console.log('error!!!!!!!!!!')
+        res.status(500).json({ message: err.message })
+      }
+ */
+
+
+  /*   res.send(''); */
+
+
+    /* db.collection('quotes').find().toArray(function(err, results) {
+        console.log(results)
+        // send HTML file populated with quotes here
+      })
+ */
+
+
+
+
+
+
+
+
+
 })
 
 app.get('/api/slides', (req,res) => {
-    res.send(defaultslides);
 
+
+    slides.find({ }, function(err, data) { 
+    
+
+    
+    res.send(data)
+    
+
+    })
 
 })
 
