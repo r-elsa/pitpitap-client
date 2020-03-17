@@ -8,10 +8,16 @@ const defaultConfig = {
 const modes = {
     development: {
         ...defaultConfig,
+
+        //backend localhost
         API_URL: 'https://my-server-staging.herokuapp.com/api/v1',
+
+
     },
     staging: {
         ...defaultConfig,
+
+        
         API_URL: 'https://my-server-staging.herokuapp.com/api/v1',
     },
     production: {

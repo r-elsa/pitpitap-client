@@ -23,6 +23,8 @@ const QandApage = () => {
 
     const apiUrl = "http://localhost:9000/api/qandas";
 
+//config.url
+
 
 /*     const [showLoading, setShowLoading] = useState(true); */
    
