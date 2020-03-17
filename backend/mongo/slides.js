@@ -1,10 +1,6 @@
 const mongoose = require('mongoose');
 
-const Slide = mongoose.model('slide', { item: String });
-
-/* const item = new Slide({ item: 'adfhgjnfghdghb' }); */
-/* item.save().then(() => console.log('slide works')); */
-
+const Slide = mongoose.model('slide', { id: Number, title: String });
 
 
 Slide.find({ }, function getData (err, data) { 
@@ -12,7 +8,6 @@ Slide.find({ }, function getData (err, data) {
     return data
 
 });
-
 
 module.exports = Slide
 

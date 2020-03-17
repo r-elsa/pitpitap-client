@@ -7,7 +7,7 @@ const Joi = require('joi')
 
 const express = require('express');
 
-
+const cors = require('cors')
 
 ///connecting to mongo db
 const connection = require('./mongo')
@@ -15,21 +15,20 @@ const questionsAnswers = require('./mongo/qandas')
 const slides = require('./mongo/slides')
 
 
-
-
 //call function, returns an object of type express - middleware processing pipeline
 const app = express()
-
+app.use(cors())
 
 //returns a piece of middleware 
 app.use(express.json())
 
  app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
-    res.header(
-      "Access-Control-Allow-Headers",
-      "Origin, X-Requested-With, Content-Type, Accept"
-    );
+    res.header("Access-Control-Allow-Headers","Authorization, Content-Type");
+    res.header('Access-Control-Expose-Headers', 'X-Total-Count')
+    res.header('Access-Control-Allow-Credentials', true);
+    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    res.header('X-Total-Count', 6)
     next();
   }); 
 //by convention,call the object 'app'
@@ -91,76 +90,20 @@ app.use(express.json())
 
         
 
-//DEFINE A ROUTE:
-app.get('/', (req, res) =>{
 
-    //CALLBACKFUNCTION /ROUTEHANDLER
+app.get('/', (req, res) =>{
     res.send('Hello world!');
 })
 
 app.get('/api/qandas', (req,res) => {
-
-
-
     questionsAnswers.find({ }, function(err, data) { 
-    
-
-    
     res.send(data)
-
 });
-
-
-
-
-
- 
-  /*   questionsAnswers.find({ }, function (err, data) { console.log('FROM BACKEND', err, data);}); */
-
-   /* try {
-        const qas = await qas.find()
-        console.log('this is qas', qas)
-        res.send(qas)
-
-
-
-
-      } catch (err) {
-          console.log('error!!!!!!!!!!')
-        res.status(500).json({ message: err.message })
-      }
- */
-
-
-  /*   res.send(''); */
-
-
-    /* db.collection('quotes').find().toArray(function(err, results) {
-        console.log(results)
-        // send HTML file populated with quotes here
-      })
- */
-
-
-
-
-
-
-
-
-
 })
 
 app.get('/api/slides', (req,res) => {
-
-
     slides.find({ }, function(err, data) { 
-    
-
-    
     res.send(data)
-    
-
     })
 
 })
@@ -173,17 +116,12 @@ app.get('/api/qandas/:id', (req,res) => {
         res.status(404).send('Item with given id not found')
         return;
     }
-
     res.send(item);
-
-
-
 })
 
 ///request params object. name based on route parameters
 app.get('/api/posts/:year/:month', (req,res)=>{
     res.send(req.params)
-
 })
 
 // QUERY PARAMETERS - KEY-VALUE PAIRS -provide additional data to   e.g. localhost/5000/posts/2020/4?sortBy=name
@@ -192,58 +130,27 @@ app.get('/api/posts/:year/:month', (req,res)=>{
     res.send(req.params)
 
 })
-
-
 ///POST REQUEST - ADD NEW COURSE
 
-
-
-//
-
-
-
 app.post('/api/qandas', (req,res)=> {
-
-
-    //validation with Joi
     const result = validateItem(req.body);
-
-
-
     if(result.error){
         res.status(400).send(result.error.details[0].message)
         return;
     }
 
-
-/*     if(!req.body.q || req.body.q.length < 3 ){
-        res.status(400).send('q required, minimum 3 characters')
-        return;
-
-    }
-
-    if(!req.body.a || req.body.a.length < 3 ){
-        res.status(400).send('a required, minimum 3 characters')
-        return;
-    }
- */
     const item = {
         id: qandas.length + 1,
         //enable parsing of jsonobjects , by default not enabled by express
         q: req.body.q,
         a:req.body.a,
-
-        //input validation
-
-
+      
 
     };
     qandas.push(item)
 
     //return to the client
     res.send(item)
-
-
 })
 
 
@@ -251,7 +158,6 @@ app.post('/api/qandas', (req,res)=> {
 
 app.put('/api/qandas/:id', (req,res) => {
 
-    
     //1.Look up the item &  If not existing -return 400 - Bad request
 
     const item = qandas.find(i => i.id === parseInt(req.params.id));
@@ -261,37 +167,20 @@ app.put('/api/qandas/:id', (req,res) => {
         return;
     }
 
-        
-
-
-
     //3.Validate
     //If invalid - return 400 - Bad request'
-
-
-
     const result = validateItem(req.body);
-
-
 
     if(result.error){
         res.status(400).send(result.error.details[0].message)
         return;
     }
-
-
         //4. Update item & Return the updated item
-
-
         item.q = req.body.q
         item.a = req.body.a
 
         res.send(item);
-
-
 })
-
-
 
 app.delete('/api/qandas/:id', (req,res) => {
 
@@ -305,35 +194,12 @@ app.delete('/api/qandas/:id', (req,res) => {
         return;
     }
 
-
-
-
    //2.Delete
 
     const deleteItemIndex = qandas.indexOf(item)
-
-
     qandas.splice(deleteItemIndex, 1)
-
-
         res.send(item);
-
-
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 function validateItem(item){
@@ -344,22 +210,8 @@ function validateItem(item){
 
     }
     return Joi.validate(item, schema);
-
-
-
 }
 
-
-
-
-
-//nodemon index.js
-
-//
-
-/* app.post()
-app.put()
-app.delete() */
 
 //LISTEN TO A GIVEN PORT 
 // IN HOSTING ENVIRONMENT have ENVIRONMENT VARIABLE CALLED PORTS - VALUE IS SET OUTSIDE THE APPLICATION
@@ -368,8 +220,177 @@ app.delete() */
 //env is the property  and name of environment value -- in this case PORT
 //set PORT=5000
 
+
+
+
+
+///////////////////ADMIN ROUTES
+
+//GET ALL QAS
+
+app.get('/api/admin/faq', (req,res) => {
+    questionsAnswers.find({ }, function(err, data) { 
+    res.send(data)
+});
+})
+
+//GET ALL SLIDES
+app.get('/api/admin/slides', (req,res) => {
+    slides.find({ }, function(err, data) { 
+    res.send(data)
+    })
+})
+
+
+//GET ONE PARTICULAR QA
+ app.get('/api/admin/faq/:id', (req,res) => {
+    const searchId = parseInt(req.params.id)
+ 
+     questionsAnswers.find({"id":searchId }, function(err, data) { 
+         const idObject = data[0]      
+        res.send(idObject) 
+     }); 
+})
+
+
+//GET ONE PARTICULAR SLIDE
+
+
+app.get('/api/admin/slides/:id', (req,res) => {
+    const searchId = parseInt(req.params.id)
+    slides.find({"id":searchId }, function(err, data) { 
+         const idObject = data[0]      
+        res.send(idObject) 
+     }); 
+})
+ 
+//CREATE NEW QA
+
+app.post('/api/admin/faq', (req,res)=> {  
+
+    questionsAnswers.find({}).sort({"id" : -1}).limit(1).exec(function(err, doc){
+      let max_id = doc[0].id;
+      let newId = max_id + 1
+  
+      const item = {
+        id: newId,
+        question :req.body.Question,
+        answer:req.body.Answer 
+    }
+
+    questionsAnswers.create(item, function (err, result) {
+        if (err) {
+            res.send(err);
+          } else {
+            console.log(result);
+            res.send(result);
+          }
+        });
+    })
+})
+
+
+    
+/// CREATE NEW SLIDE 
+app.post('/api/admin/slides', (req,res)=> {  
+
+    slides.find({}).sort({"id" : -1}).limit(1).exec(function(err, doc){
+      let max_id = doc[0].id;
+      let newId = max_id + 1
+  
+      const item = {
+        id: newId,
+        title :req.body.title, 
+    }
+
+    slides.create(item, function (err, result) {
+        if (err) {
+            res.send(err);
+          } else {
+            console.log(result);
+            res.send(result);
+          }
+        });
+    })
+})
+
+
+    
+   //DELETE ONE QA
+   app.delete('/api/admin/faq/:id', (req,res) => {   
+    const searchId = parseInt(req.params.id)
+
+    questionsAnswers.find({"id":searchId }, function(err, data) {     
+        if (err) {
+            return console.log(err);
+        }
+        const deletedItem = data
+
+        questionsAnswers.findOneAndDelete({"id":searchId }, function(err, data) { 
+                   
+          res.send(deletedItem)
+         }); 
+     }); 
+})
+
+    
+/// DELETE ONE SLIDE
+app.delete('/api/admin/slides/:id', (req,res) => {   
+    const searchId = parseInt(req.params.id)
+
+    slides.find({"id":searchId }, function(err, data) {     
+        if (err) {
+            return console.log(err);
+        }
+        const deletedItem = data
+
+        slides.findOneAndDelete({"id":searchId }, function(err, data) {                  
+          res.send(deletedItem)
+         }); 
+     }); 
+})
+
+
+///UPDATING ONE QA 
+
+app.put('/api/admin/faq/:id', (req,res) => {
+questionsAnswers.findOneAndUpdate({
+  id: req.params.id
+  },
+  { $set: { question: req.body.question, answer: req.body.answer  }
+ }, {upsert: true}, (err, update) => {
+  if (err) {
+   res.send('error updating ');
+  } else {
+   console.log('this is the update', update);
+   res.send(update);
+ }
+});
+})
+
+
+
+//UPDATE ONE SLIDE
+
+
+app.put('/api/admin/slides/:id', (req,res) => {
+
+    slides.findOneAndUpdate({
+      id: req.params.id
+      },
+      { $set: { title: req.body.title }
+     }, {upsert: true}, (err, update) => {
+      if (err) {
+       res.send('error updating ');
+      } else {
+       console.log('this is the update', update);
+       res.send(update);
+     }
+    });
+    })
+    
+//INITIALIZATION
+
 const port = process.env.PORT || 9000
-
-
 app.listen(port, ()=> console.log(`Listening on port ${port}`))
 
