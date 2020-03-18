@@ -1,7 +1,6 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { FlexContainer} from './common';
-import axios from 'axios'
 import {ItemUnderLine, Question, Answer, Text} from '../components/ExpanelContainer'
 
 import { ReactComponent as PlusIcon } from '../assets/images/plus.svg'

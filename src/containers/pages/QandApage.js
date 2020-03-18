@@ -21,7 +21,7 @@ const QandApage = () => {
     // here you can set all the variabled that you want to use them as a state for this function
     const [items, setItems] = useState([]);
 
-    const apiUrl = "http://localhost:9000/api/qandas";
+    const apiUrl = "https://pitpitap-server-staging.herokuapp.com/api/qandas";
 
 //config.url
 

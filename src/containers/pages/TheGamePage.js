@@ -12,10 +12,6 @@ import Download from '../../components/Download'
 import axios from 'axios'
 
 
-
-
-
-
 const TheGamePage = ({breakpoint, renderMobile, renderDesktop}) => {
 
     // here you can set all the variabled that you want to use them as a state for this function
@@ -23,7 +19,7 @@ const TheGamePage = ({breakpoint, renderMobile, renderDesktop}) => {
     
 const [items, setItems] = useState([]);
 
-const apiUrl = "http://localhost:9000/api/slides";
+const apiUrl = "https://pitpitap-server-staging.herokuapp.com/api/slides";
 
 
     // this function will call every time that that prop someValue will change,
@@ -37,7 +33,7 @@ const apiUrl = "http://localhost:9000/api/slides";
       const result = await axios(apiUrl);
     
       setItems(result.data);
-      console.log('INSIDE ',items)
+     /*  console.log('INSIDE ',items) */
     
    /*    setShowLoading(false); */
     
@@ -51,51 +47,7 @@ const apiUrl = "http://localhost:9000/api/slides";
         return () => { window.removeEventListener('resize', handleResize) }
       }, [])
 
-      /* return (width > breakpoint ? renderDesktop() : renderMobile())
-    } */
-
-/* 
-
-    const postRequest = (activeId, valid_pin, callback) => {
-  
-
-        const input = {
-          ride_id: activeId,
-          pin: valid_pin,
-          token: '433898df4a3e992b8411004109e4d574a90695e39e'
-        }
-        axios
-          .post('http://fast-rider.herokuapp.com/api/v1/tickets', input)
-          .then(response => {
-            callback(response.data)
-          
-            return response.data 
-          })
-    
-        
-        }
-
-
-
-        ///////////////////////////////////////////////////////////
-
-
-
-
-          axios
-      .get('http://fast-rider.herokuapp.com/api/v1/rides?token=433898df4a3e992b8411004109e4d574a90695e39e')
-      .then(response => {
-    
-        console.log(response.data)
-        props.setNotes(response.data)
-        
-      })
-  }, [])
-
-      
-
- */
-
+     
 
     const isMobile = width > 800
 
