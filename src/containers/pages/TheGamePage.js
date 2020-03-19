@@ -16,12 +16,13 @@ const TheGamePage = ({breakpoint, renderMobile, renderDesktop}) => {
 
     // here you can set all the variabled that you want to use them as a state for this function
     const [width, setWidth] = useState(window.innerWidth)
+  /*   const [didMount, setDidMount] = useState(false) */
     
 const [items, setItems] = useState([]);
 
-const apiUrl = "https://pitpitap-server-staging.herokuapp.com/api/slides";
+ const apiUrl = "https://pitpitap-server-staging.herokuapp.com/api/slides";
 
-
+/* const apiUrl = "http://localhost:9000/api/slides"; */
     // this function will call every time that that prop someValue will change,
     // if you leave that array empty so it will call only after the render of the componenet
     useEffect(() => {
