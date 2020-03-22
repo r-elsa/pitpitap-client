@@ -23,20 +23,16 @@ ${colorStyle}
 export default React.forwardRef((props, ref) => {
     const [active, setActive] = useState(false);
 
-    // add active on focus
+
     const handleChange = e => {
         const { value } = e.target;
-        // if (value === '') {
-        //     setActive(false);
-        // } else {
-        //     setActive(true);
-        // }
+
         if (props.onChange) {
             props.onChange(value)
         }
     }
     
-    // const colorStyle = props.removeActive ? props.colors : active ? 'activeInput' : 'emptyInput';
+
     
     return (
         <StyledInput {...props} onChange={handleChange} ref={ref}/>

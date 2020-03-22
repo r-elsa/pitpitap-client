@@ -1,5 +1,13 @@
-import { space, width, fontSize, color, colorStyle, buttonStyle, borderRadius } from 'styled-system';
-import styled from 'styled-components';
+import {
+  space,
+  width,
+  fontSize,
+  color,
+  colorStyle,
+  buttonStyle,
+  borderRadius
+} from "styled-system";
+import styled from "styled-components";
 
 export default styled.button`
 margin: 10rem;

@@ -1,59 +1,14 @@
-
-import React, { useState } from 'react';
-import { connect } from 'react-redux';
-import { uiActions } from '../store/ui/actions';
-import SideNav from './common/SideNav'
-
+import React, { useState } from "react";
+import { connect } from "react-redux";
+import { uiActions } from "../store/ui/actions";
+import SideNav from "./common/SideNav";
 
 const SideNavMobile = props => {
-
-  
-    return (
-        <>
-        <SideNav open ={props.open}>
-     
-        </SideNav> </>
-    );
-}
-
-
-
-/* const mapStateToProps = (state) => {
-    return {
-        route: state.ui.route,
-        data: state.ui.ride
-        
-    }
+  return (
+    <>
+      <SideNav open={props.open}></SideNav>{" "}
+    </>
+  );
 };
 
-const mapDispatchToProps = dispatch => ({
-    setActiveRoute: route => dispatch(uiActions.setActiveRoute(route)),
-  
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(SideNavMobile);
- */
-
-export default SideNavMobile
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+export default SideNavMobile;

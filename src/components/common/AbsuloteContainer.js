@@ -1,5 +1,5 @@
-import { space, width, height, color } from 'styled-system';
-import styled from 'styled-components';
+import { space, width, height, color } from "styled-system";
+import styled from "styled-components";
 
 export default styled.div`
     display: block;
@@ -12,4 +12,4 @@ export default styled.div`
     ${width}
     ${height}
     ${color}
-`
+`;

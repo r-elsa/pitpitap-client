@@ -1,5 +1,5 @@
-import { space, width, height, color } from 'styled-system';
-import styled from 'styled-components';
+import { space, width, height, color } from "styled-system";
+import styled from "styled-components";
 
 export default styled.span`
 position: absolute;
@@ -32,4 +32,4 @@ opacity: 1;
   transform: rotate(-45deg);
   ${color}
 }
-`
+`;
